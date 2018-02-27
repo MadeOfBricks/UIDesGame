@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://Sprites/mainGame.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Hi.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/sprite.gd" type="Script" id=3]
+
+[node name="Main" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 477.672, 258.878 )
+texture = ExtResource( 2 )
+script/script = ExtResource( 3 )
+
+
