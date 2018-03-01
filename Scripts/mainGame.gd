@@ -8,4 +8,4 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
-	print("LOL")
+	pass
