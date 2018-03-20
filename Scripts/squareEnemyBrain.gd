@@ -1,7 +1,6 @@
 extends Node2D
 
 onready var body = get_parent()
-onready var target = body.get_parent().get_node("Noexist")
 var walkSpeed = 200
 var currentAction = ""
 var walkVec = Vector2(1,0)
