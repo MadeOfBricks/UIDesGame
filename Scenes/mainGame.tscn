@@ -1,49 +1,20 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Scripts/mainGame.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/body.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/Reapy_1.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Reapy_2.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Reapy_0.png" type="Texture" id=5]
-[ext_resource path="res://Scripts/playerSprite.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/playerBrain.gd" type="Script" id=7]
-
-[sub_resource type="SpriteFrames" id=1]
-
-animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "stand",
-"speed": 5.0
-} ]
+[ext_resource path="res://Packed/FollowWalker.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Packed/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Packed/SquareWalker.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node2D"]
 
 script/script = ExtResource( 1 )
 
-[node name="Body" type="Area2D" parent="."]
+[node name="EnemyBody" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 526.99, 282.975 )
-input/pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-script/script = ExtResource( 2 )
+[node name="PlayerBody" parent="." instance=ExtResource( 3 )]
 
-[node name="Sprite" type="AnimatedSprite" parent="Body"]
+[node name="SquareDancerBody" parent="." instance=ExtResource( 4 )]
 
-frames = SubResource( 1 )
-animation = "stand"
-script/script = ExtResource( 6 )
-
-[node name="Brain" type="Node2D" parent="Body"]
-
-script/script = ExtResource( 7 )
+transform/pos = Vector2( 364.136, 295.929 )
 
 
