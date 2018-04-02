@@ -1,30 +1,38 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://Scripts/body.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Reapy_0.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Reapy_1.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Reapy_2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Reapy_1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Reapy_2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Reapy_0.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/charSprite.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/playerBrain.gd" type="Script" id=6]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "stand",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "stand",
 "speed": 5.0
 } ]
 
 [node name="PlayerBody" type="Area2D"]
 
-transform/pos = Vector2( 526.99, 282.975 )
+transform/pos = Vector2( 542.274, 276.651 )
 input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.88293, 0, 0, 2.17911, 3.57251, 0.22348 )
+shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
@@ -36,12 +44,36 @@ __meta__ = {
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 animation = "stand"
 script/script = ExtResource( 5 )
 
 [node name="Brain" type="Node2D" parent="."]
 
 script/script = ExtResource( 6 )
+
+[node name="BodyShape" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 3.57251, 0.22348 )
+transform/scale = Vector2( 1.88293, 2.17911 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="PredictShapeX" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 3.57251, 0.22348 )
+transform/scale = Vector2( 1.88293, 2.17911 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="PredictShapeY" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 3.57251, 0.22348 )
+transform/scale = Vector2( 1.88293, 2.17911 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
 
 

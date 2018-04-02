@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var body = get_parent()
+onready var lvTimer = get_parent().get_parent().get_node("Timer")
 var walkSpeed = 200
 var currentAction = ""
 
@@ -16,7 +17,8 @@ func _ready():
 #Use delta time
 func _process(delta):
 	currentAction = "stand"
-	_handle_input(delta)
+	if lvTimer.count <= -1:
+		_handle_input(delta)
 	
 
 func _handle_input(delta):
