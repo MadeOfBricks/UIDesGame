@@ -41,6 +41,12 @@ func _handle_input(delta):
 	
 	if currentAction =="walk":
 		var newPosVec = (walkVec.normalized() * walkSpeed * delta)
+		
+		if(body.is_colliding()):
+			var n = body.get_collision_normal()
+			newPosVec = n.slide(newPosVec)
+			walkVec = n.slide(walkVec)
+		
 		emit_signal("body_walk",newPosVec)
 	
 	
