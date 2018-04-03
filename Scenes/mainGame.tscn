@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Scripts/mainGame.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/sGameTimer.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Packed/SquareWalker.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Packed/Sar_Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Packed/Wall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Packed/Sar_FollowWalker.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Node2D"]
 
@@ -43,8 +44,10 @@ transform/pos = Vector2( 334.71, 272.979 )
 
 [node name="PlayerBody" parent="." instance=ExtResource( 5 )]
 
-[node name="SquareDancerBody 2" parent="." instance=ExtResource( 4 )]
-
 [node name="Wall" parent="." instance=ExtResource( 6 )]
+
+[node name="FollowerBody" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 756.57, 280.692 )
 
 
