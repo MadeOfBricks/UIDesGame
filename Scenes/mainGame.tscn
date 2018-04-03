@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Scripts/mainGame.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/sGameTimer.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/titleFont.fnt" type="BitmapFont" id=3]
 [ext_resource path="res://Packed/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Packed/FollowWalker.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Packed/SquareWalker.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node2D"]
 
@@ -36,5 +38,13 @@ lines_skipped = 0
 max_lines_visible = -1
 
 [node name="PlayerBody" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 578.818, 277.048 )
+
+[node name="FollowerBody" parent="." instance=ExtResource( 5 )]
+
+[node name="SquareDancerBody" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 334.71, 272.979 )
 
 
