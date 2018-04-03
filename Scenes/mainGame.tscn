@@ -1,68 +1,13 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Scripts/mainGame.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/body.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/Reapy_1.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Reapy_2.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Reapy_0.png" type="Texture" id=5]
-[ext_resource path="res://Scripts/playerSprite.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/playerBrain.gd" type="Script" id=7]
-[ext_resource path="res://Scripts/sGameTimer.gd" type="Script" id=8]
-[ext_resource path="res://Fonts/titleFont.fnt" type="BitmapFont" id=9]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
-
-[sub_resource type="SpriteFrames" id=2]
-
-animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "stand",
-"speed": 5.0
-} ]
+[ext_resource path="res://Scripts/sGameTimer.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/titleFont.fnt" type="BitmapFont" id=3]
+[ext_resource path="res://Packed/Player.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node2D"]
 
 script/script = ExtResource( 1 )
-
-[node name="Body" type="Area2D" parent="."]
-
-transform/pos = Vector2( 526.99, 282.975 )
-input/pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1.78242, 0, 0, 2.17056, 2.65906, -0.0220642 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-script/script = ExtResource( 2 )
-
-[node name="Sprite" type="AnimatedSprite" parent="Body"]
-
-frames = SubResource( 2 )
-animation = "stand"
-script/script = ExtResource( 6 )
-
-[node name="Brain" type="Node2D" parent="Body"]
-
-script/script = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
-
-transform/pos = Vector2( 2.65906, -0.0220642 )
-transform/scale = Vector2( 1.78242, 2.17056 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -70,7 +15,7 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
-script/script = ExtResource( 8 )
+script/script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 
@@ -82,12 +27,14 @@ margin/left = 494.0
 margin/top = 31.0
 margin/right = 567.0
 margin/bottom = 70.0
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 3 )
 text = "Ready"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="PlayerBody" parent="." instance=ExtResource( 4 )]
 
 
