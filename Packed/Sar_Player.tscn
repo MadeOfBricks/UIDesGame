@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=1]
 
-[ext_resource path="res://Scripts/playerBody.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Reapy_0.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Reapy_1.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Reapy_2.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/charSprite.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/playerBrain.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Characters/playerBody.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Reapy_1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Reapy_2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Reapy_0.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Characters/charSprite.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Characters/playerBrain.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -15,20 +15,20 @@ extents = Vector2( 10, 10 )
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "stand",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "stand",
 "speed": 5.0
 } ]
 
 [node name="PlayerBody" type="KinematicBody2D"]
 
-transform/pos = Vector2( 529.046, 282.718 )
+transform/pos = Vector2( 437.896, 270.957 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 2.00183, 0, 0, 2.19539, 0.0104068, 0.00218441 )

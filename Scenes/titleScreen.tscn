@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://Scripts/title.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Menus/title.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/titleFont.fnt" type="BitmapFont" id=2]
 
 [node name="titleScreen" type="Node2D"]
