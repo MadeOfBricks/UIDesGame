@@ -1,5 +1,5 @@
 extends Timer
-var count = 3;
+var count = 0;
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"

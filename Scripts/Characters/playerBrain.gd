@@ -1,7 +1,14 @@
 extends Node2D
 
 onready var body = get_parent()
+onready var mySprite = body.get_node("Sprite")
 onready var lvTimer = get_parent().get_parent().get_node("Timer")
+
+onready var attacks = [
+	preload("res://Packed/Attacks/Cut1.tscn")
+]
+var attackReady = true;
+
 var walkSpeed = 200
 var currentAction = ""
 
@@ -38,6 +45,16 @@ func _handle_input(delta):
 		walkVec.x += 5
 		currentAction = "walk"
 	
+	if Input.is_action_pressed("MeleeAttack") && attackReady:
+		attackReady = false
+		var cut = attacks[0].instance()
+		var scale = mySprite.get_scale()
+		cut.set_pos(Vector2(scale.x * 20,5))
+		cut.scale(scale)
+		cut.get_node("Sprite").play()
+		get_parent().add_child(cut) 
+	elif !Input.is_action_pressed("MeleeAttack"):
+		attackReady = true;
 	
 	if currentAction =="walk":
 		var newPosVec = (walkVec.normalized() * walkSpeed * delta)

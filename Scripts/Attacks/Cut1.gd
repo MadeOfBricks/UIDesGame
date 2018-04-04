@@ -5,8 +5,8 @@ onready var mySpriteFrames = mySprite.get_sprite_frames()
 
 func _ready():
 	set_process(true)
+	mySprite.connect("finished",self,"_on_anim_finish")
 	pass
 	
-func _process(delta):
-	if mySprite.get_frame() >= mySpriteFrames.get_frame_count("Cut1"):
-		queue_free();
+func _on_anim_finish():
+	queue_free()

@@ -2,6 +2,8 @@ extends AnimatedSprite
 
 onready var body = get_parent()
 onready var brain = body.get_node("Brain")
+#onready var player = get_node("../Player")
+
 var timeElapsed = 0
 
 func _ready():
