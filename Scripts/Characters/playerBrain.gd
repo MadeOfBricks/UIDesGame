@@ -1,8 +1,11 @@
 extends Node2D
 
 onready var body = get_parent()
+
 onready var mySprite = body.get_node("Sprite")
 onready var mySpriteFrames = mySprite.get_sprite_frames()
+onready var mySpriteLastFrame = 0
+
 onready var lvTimer = get_parent().get_parent().get_node("Timer")
 
 onready var attacks = [
@@ -35,15 +38,16 @@ func _process(delta):
 	
 
 func _handle_input(delta):
+	
 	if Input.is_action_pressed("MeleeAttack") && attackReady && currentAction != "meleeAttack":
 		attackReady = false
+		
 		currentAction = "meleeAttack"
 		mySprite.set_animation("Cut1")
-		
+		mySprite.set_frame(0)
 	else:
 		if mySprite.get_animation() == "Cut1":
-			#print(mySprite.get_frame())
-			if mySprite.get_frame() == 2:
+			if mySprite.get_frame() == 2 && mySpriteLastFrame ==1:
 				var cut = attacks[0].instance()
 				var scale = mySprite.get_scale()
 				cut.set_pos(Vector2(scale.x * 20,5))
@@ -51,6 +55,7 @@ func _handle_input(delta):
 				cut.get_node("Sprite").play()
 				get_parent().add_child(cut) 
 			currentAction = "meleeAttack"
+			mySpriteLastFrame = mySprite.get_frame();
 		else:
 			currentAction = "stand"
 		if !Input.is_action_pressed("MeleeAttack"):

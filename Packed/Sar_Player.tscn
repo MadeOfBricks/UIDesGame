@@ -60,12 +60,6 @@ frames = SubResource( 2 )
 animation = "stand"
 script/script = ExtResource( 13 )
 
-[node name="SpriteBlu" type="AnimatedSprite" parent="."]
-
-frames = SubResource( 2 )
-animation = "stand"
-script/script = ExtResource( 13 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 transform/pos = Vector2( 0.0104068, 0.00218441 )
