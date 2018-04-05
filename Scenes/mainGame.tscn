@@ -38,7 +38,7 @@ max_lines_visible = -1
 
 [node name="PlayerBody" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 40.1152, 52.4231 )
+transform/pos = Vector2( 58.2033, 65.9892 )
 
 [node name="FollowerBody" parent="." instance=ExtResource( 5 )]
 

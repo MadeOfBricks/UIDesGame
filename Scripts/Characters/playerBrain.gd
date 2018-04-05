@@ -2,11 +2,17 @@ extends Node2D
 
 onready var body = get_parent()
 onready var mySprite = body.get_node("Sprite")
+onready var mySpriteFrames = mySprite.get_sprite_frames()
 onready var lvTimer = get_parent().get_parent().get_node("Timer")
 
 onready var attacks = [
 	preload("res://Packed/Attacks/Cut1.tscn")
 ]
+
+var currentAttacks = [
+	
+]
+
 var attackReady = true;
 
 var walkSpeed = 200
@@ -17,44 +23,57 @@ signal body_walk
 
 #Set process
 func _ready():
+	currentAction = "stand"
 	set_process(true)
 	pass
 
 #Set currentAction and handle input for walking
 #Use delta time
 func _process(delta):
-	currentAction = "stand"
 	if lvTimer.count <= -1:
 		_handle_input(delta)
 	
 
 func _handle_input(delta):
-	#Walker
+	if Input.is_action_pressed("MeleeAttack") && attackReady && currentAction != "meleeAttack":
+		attackReady = false
+		currentAction = "meleeAttack"
+		mySprite.set_animation("Cut1")
+		
+	else:
+		if mySprite.get_animation() == "Cut1":
+			#print(mySprite.get_frame())
+			if mySprite.get_frame() == 2:
+				var cut = attacks[0].instance()
+				var scale = mySprite.get_scale()
+				cut.set_pos(Vector2(scale.x * 20,5))
+				cut.scale(scale)
+				cut.get_node("Sprite").play()
+				get_parent().add_child(cut) 
+			currentAction = "meleeAttack"
+		else:
+			currentAction = "stand"
+		if !Input.is_action_pressed("MeleeAttack"):
+			attackReady = true;
+	
+	
 	var walkVec = Vector2(0,0)
 	
-	if Input.is_action_pressed("Up"):
-		walkVec.y -= 5
-		currentAction = "walk"
-	if Input.is_action_pressed("Down"):
-		walkVec.y += 5
-		currentAction = "walk"
-	if Input.is_action_pressed("Left"):
-		walkVec.x -= 5
-		currentAction = "walk"
-	if Input.is_action_pressed("Right"):
-		walkVec.x += 5
-		currentAction = "walk"
+	if currentAction != "meleeAttack":
+		if Input.is_action_pressed("Up"):
+			walkVec.y -= 5
+			currentAction = "walk"
+		if Input.is_action_pressed("Down"):
+			walkVec.y += 5
+			currentAction = "walk"
+		if Input.is_action_pressed("Left"):
+			walkVec.x -= 5
+			currentAction = "walk"
+		if Input.is_action_pressed("Right"):
+			walkVec.x += 5
+			currentAction = "walk"
 	
-	if Input.is_action_pressed("MeleeAttack") && attackReady:
-		attackReady = false
-		var cut = attacks[0].instance()
-		var scale = mySprite.get_scale()
-		cut.set_pos(Vector2(scale.x * 20,5))
-		cut.scale(scale)
-		cut.get_node("Sprite").play()
-		get_parent().add_child(cut) 
-	elif !Input.is_action_pressed("MeleeAttack"):
-		attackReady = true;
+	
 	
 	if currentAction =="walk":
 		var newPosVec = (walkVec.normalized() * walkSpeed * delta)
@@ -66,4 +85,8 @@ func _handle_input(delta):
 		
 		emit_signal("body_walk",newPosVec)
 	
-	
+
+func current_attacks_has(atk):
+	pass
+	#for atk in currentAttacks:
+		
