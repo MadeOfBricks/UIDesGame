@@ -5,6 +5,7 @@ onready var body = get_parent()
 onready var mySprite = body.get_node("Sprite")
 onready var mySpriteFrames = mySprite.get_sprite_frames()
 onready var mySpriteLastFrame = 0
+onready var timeSinceLastFrame = 0
 
 onready var lvTimer = get_parent().get_parent().get_node("Timer")
 
@@ -38,7 +39,7 @@ func _process(delta):
 	
 
 func _handle_input(delta):
-	
+	timeSinceLastFrame += delta
 	if Input.is_action_pressed("MeleeAttack") && attackReady && currentAction != "meleeAttack":
 		attackReady = false
 		
@@ -47,7 +48,9 @@ func _handle_input(delta):
 		mySprite.set_frame(0)
 	else:
 		if mySprite.get_animation() == "Cut1":
-			if mySprite.get_frame() == 2 && mySpriteLastFrame ==1:
+			if mySprite.get_frame() != mySpriteLastFrame:
+				timeSinceLastFrame = 0
+			if mySprite.get_frame() == 1 && mySpriteLastFrame ==0:
 				var cut = attacks[0].instance()
 				var scale = mySprite.get_scale()
 				cut.set_pos(Vector2(scale.x * 20,5))

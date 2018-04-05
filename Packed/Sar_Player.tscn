@@ -9,9 +9,9 @@
 [ext_resource path="res://Sprites/Player/ClawCut1/Cut1SizedUp6.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/Player/ClawCut1/Cut1SizedUp7.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Player/ClawCut1/Cut1SizedUp8.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Reapy_0.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Reapy_1.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Reapy_2.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Reapy_1.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Reapy_2.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Reapy_0.png" type="Texture" id=12]
 [ext_resource path="res://Scripts/Characters/playerSprite_V2.gd" type="Script" id=13]
 [ext_resource path="res://Scripts/Characters/playerBrain.gd" type="Script" id=14]
 
@@ -28,15 +28,15 @@ animations = [ {
 "name": "Cut1",
 "speed": 30.0
 }, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "stand",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": false,
+"name": "stand",
+"speed": 0.0
 } ]
 
 [node name="PlayerBody" type="KinematicBody2D"]

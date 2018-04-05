@@ -20,4 +20,4 @@ func _on_anim_finish():
 	queue_free()
 
 func _on_body_enter(other):
-	print("HIT " + get_name())
+	print("HIT " + other.get_name())
