@@ -5,9 +5,13 @@ var spawn_items = [
     preload("res://Sprites/ReapyG_0.png"),
     preload("res://Sprites/ReapyB_0.png")
 ]
+var colors = ["res://Packed.Player_Sprites_BK.tscn",
+    "res://Packed.Player_Sprites_Rd.tscn",
+    "res://Packed.Player_Sprites_Gn.tscn",
+    "res://Packed.Player_Sprites_Blu.tscn" ]
+
 var data = {
-    player_level = 0,
-    player_type = 0
+    player_Color = "res://Packed/Player_Sprite_BK.tscn"
 }
 
 var count = 0
@@ -39,7 +43,7 @@ func _on_ButtonStart_released():
 	var file = File.new()
 	data.player_type = count
 	file.open("res://Packed/saveFile.txt", File.WRITE) 
-	file.store_line(data.to_json())
+	file.store_line(colors[count])
 	file.close()
 	get_tree().change_scene("res://Scenes/mainGame.tscn")
 

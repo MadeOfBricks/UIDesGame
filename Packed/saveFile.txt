@@ -1,1 +1,1 @@
-{"player_level":0, "player_type":3}
+res://Packed.Player_Sprites_Gn.tscn

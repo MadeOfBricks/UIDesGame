@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://Scripts/mainGame.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/sGameTimer.gd" type="Script" id=2]
@@ -7,6 +7,18 @@
 [ext_resource path="res://Packed/Sar_Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Packed/Wall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Packed/Sar_FollowWalker.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/pause.png" type="Texture" id=8]
+[ext_resource path="res://Sound/countdown.wav" type="Sample" id=9]
+[ext_resource path="res://Scripts/countdown.gd" type="Script" id=10]
+
+[sub_resource type="SampleLibrary" id=1]
+
+samples/countdown = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 9 )
+}
 
 [node name="Main" type="Node2D"]
 
@@ -49,5 +61,55 @@ transform/pos = Vector2( 334.71, 272.979 )
 [node name="FollowerBody" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 756.57, 280.692 )
+
+[node name="ColorFrame" type="ColorFrame" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 793.0
+margin/top = 37.0
+margin/right = 823.0
+margin/bottom = 67.0
+color = Color( 1, 0.585938, 0, 1 )
+
+[node name="Pause" type="TextureButton" parent="ColorFrame"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 4.0
+margin/top = 4.0
+margin/right = 26.0
+margin/bottom = 26.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 8 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="SamplePlayer" type="SamplePlayer" parent="."]
+
+config/polyphony = 1
+config/samples = SubResource( 1 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
+script/script = ExtResource( 10 )
+
+[connection signal="released" from="ColorFrame/Pause" to="." method="_on_Pause_released"]
 
 

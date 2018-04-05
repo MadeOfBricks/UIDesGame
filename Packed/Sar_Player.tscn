@@ -1,30 +1,13 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Scripts/playerBody.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Reapy_1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Reapy_2.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Reapy_0.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/charSprite.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/playerBrain.gd" type="Script" id=6]
+[ext_resource path="res://Packed/Player_Sprite_Bk.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/playerBrain.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
-
-[sub_resource type="SpriteFrames" id=2]
-
-animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "stand",
-"speed": 5.0
-} ]
 
 [node name="PlayerBody" type="KinematicBody2D"]
 
@@ -41,11 +24,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
-
-frames = SubResource( 2 )
-animation = "stand"
-script/script = ExtResource( 5 )
+[node name="Sprite" parent="." instance=ExtResource( 2 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -57,6 +36,6 @@ _update_shape_index = 0
 
 [node name="Brain" type="Node2D" parent="."]
 
-script/script = ExtResource( 6 )
+script/script = ExtResource( 3 )
 
 
