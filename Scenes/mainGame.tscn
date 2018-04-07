@@ -42,8 +42,4 @@ transform/pos = Vector2( 58.2033, 65.9892 )
 
 [node name="FollowerBody" parent="." instance=ExtResource( 5 )]
 
-[node name="FollowerBody1" parent="." instance=ExtResource( 5 )]
-
-transform/pos = Vector2( 731.985, 330.801 )
-
 

@@ -1,5 +1,7 @@
 extends Area2D
 
+onready var main = get_tree().get_root()
+onready var owner = get_parent()
 onready var mySprite = get_node("Sprite")
 onready var mySpriteFrames = mySprite.get_sprite_frames()
 onready var mySpriteFramesCount = mySpriteFrames.get_frame_count("Cut1")
@@ -21,3 +23,6 @@ func _on_anim_finish():
 
 func _on_body_enter(other):
 	print("HIT " + other.get_name())
+	other.health -= 1
+	if other.health <= 0:
+		other._die()

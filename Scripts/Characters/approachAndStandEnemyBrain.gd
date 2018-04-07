@@ -2,7 +2,6 @@ extends Node2D
 
 onready var body = get_parent()
 onready var main = body.get_parent()
-onready var timer = get_node("Timer")
 var walkSpeed = 200
 var turnSpeed = 2
 var currentAction = ""
@@ -20,7 +19,6 @@ signal body_walk
 
 #Set process
 func _ready():
-	timer.connect("timeout",self,"_on_timeout")
 	set_process(true)
 	pass
 
@@ -30,7 +28,7 @@ func _process(delta):
 	currentAction = "stand"
 	if main.has_node("PlayerBody"):
 		target = main.get_node("PlayerBody")
-		if abs(body.get_pos().distance_to(target.get_pos())) > 50:
+		if abs(body.get_pos().distance_to(target.get_pos())) > 300:
 			currentAction = "walk"
 	
 	if currentAction == "walk":
@@ -42,8 +40,3 @@ func _process(delta):
 		#var thisWalkVec = walkVec.rotated(ang)
 		var newPosVec = (walkVec.normalized() * walkSpeed/2 * delta)
 		emit_signal("body_walk",newPosVec)
-
-func _on_timeout():
-	for strings in printStrings:
-		print(strings)
-	printStrings.clear()

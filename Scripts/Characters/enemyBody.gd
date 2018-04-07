@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var brain = get_node("Brain")
+onready var health = 1
 
 #Brain will tell us when to walk
 func _ready():
@@ -11,3 +12,5 @@ func _ready():
 func _on_body_walk(vec):
 	set_pos(get_pos() + vec)
 
+func _die():
+	queue_free()

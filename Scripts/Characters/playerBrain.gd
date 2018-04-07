@@ -40,12 +40,14 @@ func _process(delta):
 
 func _handle_input(delta):
 	timeSinceLastFrame += delta
+	#Attack Start
 	if Input.is_action_pressed("MeleeAttack") && attackReady && currentAction != "meleeAttack":
 		attackReady = false
 		
 		currentAction = "meleeAttack"
 		mySprite.set_animation("Cut1")
 		mySprite.set_frame(0)
+	#Attack Running
 	else:
 		if mySprite.get_animation() == "Cut1":
 			if mySprite.get_frame() != mySpriteLastFrame:
@@ -94,7 +96,3 @@ func _handle_input(delta):
 		emit_signal("body_walk",newPosVec)
 	
 
-func current_attacks_has(atk):
-	pass
-	#for atk in currentAttacks:
-		
