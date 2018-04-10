@@ -5,12 +5,14 @@ onready var health = 1
 
 #Brain will tell us when to walk
 func _ready():
+	set_layer_mask(2)
+	set_collision_mask(4)
 	add_to_group("enemies")
 	brain.connect("body_walk",self,"_on_body_walk")
 	
 #When we need to walk, set pos to new vector provided by brain
 func _on_body_walk(vec):
-	move(get_pos() + vec)
+	move(vec)
 
 func _die():
 	queue_free()

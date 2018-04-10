@@ -7,7 +7,7 @@ onready var brain = body.get_node("Brain")
 var timeElapsed = 0
 
 func _ready():
-	#brain.connect("body_walk",self,"_on_body_walk")
+	brain.connect("body_walk",self,"_on_body_walk")
 	set_process(true)
 
 func _on_body_walk(vec):
@@ -21,4 +21,3 @@ func _on_body_walk(vec):
 func _process(delta):
 	if brain.currentAction == "stand":
 		set_animation("stand")
-	

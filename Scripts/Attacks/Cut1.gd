@@ -22,7 +22,7 @@ func _on_anim_finish():
 	queue_free()
 
 func _on_body_enter(other):
-	print("HIT " + other.get_name())
-	other.health -= 1
-	if other.health <= 0:
-		other._die()
+	if other.get_name() != "PlayerBody":
+		other.health -= 1
+		if other.health <= 0:
+			other._die()

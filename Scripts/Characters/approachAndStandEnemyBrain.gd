@@ -22,21 +22,23 @@ func _ready():
 	set_process(true)
 	pass
 
-#Set currentAction and handle input for walking
-#Use delta time
+
 func _process(delta):
 	currentAction = "stand"
-	#print("we here?")
+	
 	if main.has_node("PlayerBody"):
 		target = main.get_node("PlayerBody")
+		
 		if abs(body.get_pos().distance_to(target.get_pos())) > 300:
 			currentAction = "walk"
+		
 	
 	if currentAction == "walk":
 		var dirVec = target.get_pos() - body.get_pos()
 		walkVec = dirVec
 		
 		var newPosVec = (walkVec.normalized() * walkSpeed/2 * delta)
+		
 		if(body.is_colliding()):
 			var n = body.get_collision_normal()
 			newPosVec = n.slide(newPosVec)
