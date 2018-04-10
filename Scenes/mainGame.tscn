@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://Scripts/mainGame.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Menus/sGameTimer.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Sound/countdown.wav" type="Sample" id=6]
 [ext_resource path="res://Scripts/countdown.gd" type="Script" id=7]
 [ext_resource path="res://Packed/Sar_Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Packed/Sar_FollowWalker.tscn" type="PackedScene" id=9]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -100,7 +101,7 @@ script/script = ExtResource( 7 )
 
 [node name="PlayerBody" parent="." instance=ExtResource( 8 )]
 
-[node name="FollowerBody" parent="." instance_placeholder="res://Packed/Sar_FollowWalker.tscn"]
+[node name="FollowerBody" parent="." instance=ExtResource( 9 )]
 
 [connection signal="released" from="ColorFrame/Pause" to="." method="_on_Pause_released"]
 
