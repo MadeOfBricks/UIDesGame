@@ -45,6 +45,8 @@ func _handle_input(delta):
 		attackReady = false
 		
 		currentAction = "meleeAttack"
+		
+	
 		mySprite.set_animation("Cut1")
 		mySprite.set_frame(0)
 	#Attack Running
@@ -65,6 +67,7 @@ func _handle_input(delta):
 			currentAction = "stand"
 		if !Input.is_action_pressed("MeleeAttack"):
 			attackReady = true;
+
 	
 	
 	var walkVec = Vector2(0,0)

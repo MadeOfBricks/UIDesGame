@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://Sprites/ReapyB_0.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/ReapyB_1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/ReapyB_2.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/charSprite.gd" type="Script" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "stand",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[node name="Sprite" type="AnimatedSprite"]
+
+frames = SubResource( 1 )
+animation = "stand"
+script/script = ExtResource( 4 )
+
+

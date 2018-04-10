@@ -11,8 +11,11 @@ func _ready():
 
 
 func _on_Play_pressed():
-	print("Play Button Pressed...")
-	get_tree().change_scene("res://Scenes/mainGame.tscn")
+	var file = File.new()
+	if not file.file_exists("res://Packed/saveFile.txt"):
+		get_tree().change_scene("res://Scenes/characterSelect.tscn")
+	else:
+		get_tree().change_scene("res://Scenes/mainGame.tscn")
 	
 
 

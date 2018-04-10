@@ -26,6 +26,7 @@ func _ready():
 #Use delta time
 func _process(delta):
 	currentAction = "stand"
+	#print("we here?")
 	if main.has_node("PlayerBody"):
 		target = main.get_node("PlayerBody")
 		if abs(body.get_pos().distance_to(target.get_pos())) > 300:
@@ -33,11 +34,8 @@ func _process(delta):
 	
 	if currentAction == "walk":
 		var dirVec = target.get_pos() - body.get_pos()
-		
-		
 		walkVec = dirVec
 		
-		#var thisWalkVec = walkVec.rotated(ang)
 		var newPosVec = (walkVec.normalized() * walkSpeed/2 * delta)
 		if(body.is_colliding()):
 			var n = body.get_collision_normal()
