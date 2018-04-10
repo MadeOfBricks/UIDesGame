@@ -39,4 +39,8 @@ func _process(delta):
 		
 		#var thisWalkVec = walkVec.rotated(ang)
 		var newPosVec = (walkVec.normalized() * walkSpeed/2 * delta)
+		if(body.is_colliding()):
+			var n = body.get_collision_normal()
+			newPosVec = n.slide(newPosVec)
+			walkVec = n.slide(walkVec)
 		emit_signal("body_walk",newPosVec)

@@ -10,7 +10,7 @@ func _ready():
 	
 #When we need to walk, set pos to new vector provided by brain
 func _on_body_walk(vec):
-	set_pos(get_pos() + vec)
+	move(get_pos() + vec)
 
 func _die():
 	queue_free()

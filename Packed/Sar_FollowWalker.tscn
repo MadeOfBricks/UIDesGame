@@ -33,8 +33,8 @@ input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-collision/layers = 3072
-collision/mask = 3072
+collision/layers = 1
+collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 __meta__ = {
@@ -56,5 +56,12 @@ _update_shape_index = 0
 [node name="Brain" type="Node2D" parent="."]
 
 script/script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="Brain"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
 
 
