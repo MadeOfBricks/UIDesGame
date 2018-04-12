@@ -23,7 +23,7 @@ var currentAttacks = [
 var attackReady = true;
 
 var walkSpeed = 200
-var dashSpeed = 1500
+var dashSpeed = 800
 var dashRange = 100
 var currentAction = ""
 
@@ -68,6 +68,8 @@ func _handle_input(delta):
 		currentAction = "stand"
 	
 	if currentAction == "dashTowards":
+		if mySprite.get_animation() != "DashIn":
+			mySprite.set_animation("DashIn")
 		if dashTar != null:
 			var adjustX = dashTar.get_pos().x - mySprite.get_scale().x * 60
 			var adjustVec = Vector2(adjustX,dashTar.get_pos().y)
