@@ -42,3 +42,7 @@ func _on_ButtonStart_released():
 
 func _on_Button_released():
 	get_tree().change_scene("res://Scenes/titleScreen.tscn")
+
+
+func _on_ButtonStart_pressed():
+		get_node("Loading").set_text("Loading...")
