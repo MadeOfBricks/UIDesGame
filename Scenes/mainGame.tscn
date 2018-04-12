@@ -103,6 +103,12 @@ script/script = ExtResource( 7 )
 
 [node name="FollowerBody" parent="." instance=ExtResource( 9 )]
 
+transform/pos = Vector2( 802.859, 196.964 )
+
+[node name="FollowerBody1" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 740.558, 368.107 )
+
 [connection signal="released" from="ColorFrame/Pause" to="." method="_on_Pause_released"]
 
 

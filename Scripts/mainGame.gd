@@ -9,8 +9,14 @@ onready var playerSprites = [
 	preload("res://Packed/PlayerSprites/Player_Sprite_Blu.tscn")
 ]
 
+onready var enemies = [
+	get_node("FollowerBody"),
+	get_node("FollowerBody1")
+]
+
 
 func _ready():
+	
 	var file = File.new()
 	file.open("res://Packed/saveFile.txt", File.READ)
 	var colorNo = file.get_var()

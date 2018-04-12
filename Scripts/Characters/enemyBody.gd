@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+onready var main = get_parent()
 onready var brain = get_node("Brain")
 onready var health = 1
 
@@ -15,4 +16,6 @@ func _on_body_walk(vec):
 	move(vec)
 
 func _die():
+	var meInMain = main.enemies.find(self)
+	main.enemies.remove(meInMain)
 	queue_free()
