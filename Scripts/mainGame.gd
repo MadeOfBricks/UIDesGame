@@ -1,6 +1,7 @@
 extends Node2D
 var gameState = true
 onready var player = get_node("PlayerBody")
+onready var dBText = get_node("DBText")
 
 onready var playerSprites = [
 	preload("res://Packed/PlayerSprites/Player_Sprite_Bk.tscn"),
@@ -16,7 +17,9 @@ onready var enemies = [
 
 
 func _ready():
-	
+	for i in range(5):
+		dBText._add_line("text" + String(i))
+		
 	var file = File.new()
 	file.open("res://Packed/saveFile.txt", File.READ)
 	var colorNo = file.get_var()

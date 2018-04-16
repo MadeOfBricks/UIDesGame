@@ -1,39 +1,39 @@
 [gd_scene load_steps=14 format=1]
 
-[ext_resource path="res://Sprites/ReapyG_0.png" type="Texture" id=1]
-[ext_resource path="res://Sprites/ReapyG_1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/ReapyG_2.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp1.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp2.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp3.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp4.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp5.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp6.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp7.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp8.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp1.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp3.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp4.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp5.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp6.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp7.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Player/GClawCut1/Cut1SizedUp8.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/ReapyG_0.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/ReapyG_1.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/ReapyG_2.png" type="Texture" id=11]
 [ext_resource path="res://Scripts/Characters/playerSprite_V2.gd" type="Script" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Cut1",
+"speed": 30.0
+}, {
+"frames": [ ExtResource( 9 ) ],
 "loop": true,
 "name": "stand",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "DashIn",
-"speed": 30.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "Cut1",
 "speed": 30.0
 } ]
 

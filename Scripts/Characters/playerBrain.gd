@@ -2,6 +2,7 @@ extends Node2D
 
 onready var body = get_parent()
 onready var main = body.get_parent()
+onready var debug = main.get_node("DBText")
 
 onready var mySprite = body.get_node("Sprite")
 onready var mySpriteFrames = mySprite.get_sprite_frames()
@@ -49,6 +50,7 @@ func _handle_input(delta):
 	#Attack Start
 	var actionFree = currentAction != "meleeAttack" && currentAction != "dashTowards"
 	if Input.is_action_pressed("MeleeAttack") && attackReady && actionFree:
+		debug._add_line("press detected")
 		attackReady = false
 		
 		currentAction = "dashTowards"
@@ -76,7 +78,7 @@ func _handle_input(delta):
 			var dirVec = adjustVec - body.get_pos()
 			dirVec = dirVec.normalized() * dashSpeed * delta
 			emit_signal("body_dash",dirVec)
-			if body.get_pos().distance_squared_to(adjustVec) < dashSpeed * delta:
+			if body.get_pos().distance_squared_to(adjustVec) < dashSpeed * delta * 1.2:
 				body.set_pos(adjustVec)
 				currentAction = "meleeAttack"
 				mySprite.set_animation("Cut1")
@@ -94,7 +96,7 @@ func _handle_input(delta):
 	elif currentAction == "meleeCoolDown":
 		if mySprite.get_animation() =="stand":
 			currentAction = "stand"
-		print(currentAction)
+		#print(currentAction)
 	elif currentAction == "stand":
 		if !Input.is_action_pressed("MeleeAttack"):
 			attackReady = true;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://Scripts/mainGame.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Background/btileset.res" type="TileSet" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Sprites/pause.png" type="Texture" id=9]
 [ext_resource path="res://Sound/countdown.wav" type="Sample" id=10]
 [ext_resource path="res://Scripts/countdown.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/Menus/DBText.gd" type="Script" id=12]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -72,6 +73,8 @@ max_lines_visible = -1
 
 [node name="PlayerBody" parent="." instance=ExtResource( 6 )]
 
+transform/pos = Vector2( 703.188, 355.368 )
+
 [node name="Wall" parent="." instance=ExtResource( 7 )]
 
 [node name="FollowerBody" parent="." instance=ExtResource( 8 )]
@@ -117,6 +120,22 @@ script/script = ExtResource( 11 )
 [node name="FollowerBody1" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 812.272, 388.871 )
+
+[node name="DBText" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 2.0
+margin/top = 3.0
+margin/right = 42.0
+margin/bottom = 17.0
+text = "Test"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script/script = ExtResource( 12 )
 
 [connection signal="released" from="Pause" to="." method="_on_Pause_released"]
 
