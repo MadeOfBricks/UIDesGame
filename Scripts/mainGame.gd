@@ -10,6 +10,8 @@ onready var playerSprites = [
 	preload("res://Packed/PlayerSprites/Player_Sprite_Blu.tscn")
 ]
 
+var pData = {}
+
 onready var enemies = [
 	get_node("FollowerBody"),
 	get_node("FollowerBody1"),
@@ -24,9 +26,10 @@ func _ready():
 		
 	var file = File.new()
 	file.open("res://Packed/saveFile.sav", File.READ)
-	var colorNo = file.get_var()
+	var text = file.get_as_text()
+	pData.parse_json(text)
 	file.close()
-	var spriteNode = playerSprites[colorNo].instance()
+	var spriteNode = playerSprites[pData["pColor"]].instance()
 	get_node("PlayerBody/Sprite").queue_free()
 	player.add_child(spriteNode)
 	player.get_node("Brain").mySprite = spriteNode
