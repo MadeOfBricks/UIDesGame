@@ -1,0 +1,93 @@
+[gd_scene load_steps=20 format=1]
+
+[ext_resource path="res://Scripts/Characters/PokeEnemyBody.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/ModPoke/Poke1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/ModPoke/Poke2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/ModPoke/Poke3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/ModPoke/Poke4.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/ModPoke/Poke5.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/ModPoke/Poke6.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/ModPoke/Poke7.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/ModPoke/Poke8.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/ModPoke/Poke9.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/ModPoke/Poke10.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/ModPoke/Poke11.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/ModPoke/Poke14.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/ModPoke/Poke15.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/ModPoke/Poke16.png" type="Texture" id=15]
+[ext_resource path="res://Scripts/Characters/PokeEnemySprite.gd" type="Script" id=16]
+[ext_resource path="res://Scripts/Characters/PokeEnemyBrain.gd" type="Script" id=17]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 19.0717, 10.0994 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "stand",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "dead",
+"speed": 5.0
+} ]
+
+[node name="PokeEnemy" type="KinematicBody2D" groups=[
+"enemies",
+]]
+
+transform/pos = Vector2( 277.472, 505.594 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 0.675343, 0, 0, 1.37527, 2.19071, 0.920329 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 2 )
+animation = "stand"
+playing = true
+script/script = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 2.19071, 0.920329 )
+transform/scale = Vector2( 0.675343, 1.37527 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Brain" type="Node2D" parent="."]
+
+script/script = ExtResource( 17 )
+
+[node name="Timer" type="Timer" parent="Brain"]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = false
+autostart = true
+
+
