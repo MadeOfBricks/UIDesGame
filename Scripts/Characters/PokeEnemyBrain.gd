@@ -41,6 +41,7 @@ func _process(delta):
 	
 	if currentAction == "attackBegin" && target != null:
 		if lastFrame != mySprite.get_frame() && mySprite.get_frame() == 2:
+			currentAction = "attack"
 			var dirVec = target.get_pos() - body.get_pos()
 			var spike = preload("res://Packed/Spike.tscn")
 			var inst = spike.instance()
