@@ -17,3 +17,4 @@ func _on_Continue_released():
 func _on_Quit_released():
 	queue_free()
 	get_tree().change_scene("res://Scenes/titleScreen.tscn")
+	get_tree().set_pause(false)

@@ -23,7 +23,7 @@ func _ready():
 		dBText._add_line("text" + String(i))
 		
 	var file = File.new()
-	file.open("res://Packed/saveFile.txt", File.READ)
+	file.open("res://Packed/saveFile.sav", File.READ)
 	var colorNo = file.get_var()
 	file.close()
 	var spriteNode = playerSprites[colorNo].instance()

@@ -9,7 +9,7 @@ func _ready():
 
 func _on_Play_released():
 	var file = File.new()
-	if not file.file_exists("res://Packed/saveFile.txt"):
+	if not file.file_exists("res://Packed/saveFile.sav"):
 		get_tree().change_scene("res://Scenes/characterSelect.tscn")
 	else:
 		get_tree().change_scene("res://Scenes/mainGame.tscn")
