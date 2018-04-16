@@ -26,9 +26,7 @@ script/script = ExtResource( 1 )
 
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
-"enemyProjectile",
-]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 transform/scale = Vector2( 0.534022, 0.438257 )
 shape = SubResource( 1 )

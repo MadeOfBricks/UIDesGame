@@ -6,13 +6,14 @@ onready var mySprite = body.get_node("Sprite")
 onready var timer = get_node("Timer")
 var walkSpeed = 200
 var turnSpeed = 2
+var spikeSpeed = 50
 var followDist = 150
 var lastFrame = 0
 var currentAction = ""
 var walkVec = Vector2(1,0)
 
 onready var lastPivot = body.get_pos()
-onready var target
+onready var target = null
 
 
 onready var printStrings = []
@@ -32,31 +33,30 @@ func _ready():
 #Set currentAction and handle input for walking
 #Use delta time
 func _process(delta):
+	if main.has_node("PlayerBody"):
+			if target == null:
+				target = main.get_node("PlayerBody")
+	else:
+		target = null
 	
-	
-	if currentAction == "attackBegin":
+	if currentAction == "attackBegin" && target != null:
 		if lastFrame != mySprite.get_frame() && mySprite.get_frame() == 2:
-			print("pew pew")
+			var dirVec = target.get_pos() - body.get_pos()
 			var spike = preload("res://Packed/Spike.tscn")
 			var inst = spike.instance()
+			inst.velocity = dirVec.normalized() * spikeSpeed * delta
 			inst.set_pos(body.get_pos())
 			main.add_child(inst)
-			
-			
 	
-	
-	
-	
-	
-	
+	if target == null:
+		currentAction == "stand"
 	
 	if mySprite.get_animation() != "attack" && currentAction == "attack":
 		currentAction = "stand"
 	
 	#Walking
 	if currentAction != "attack" && currentAction != "attackBegin" && currentAction != "attackCoolDown":
-		if main.has_node("PlayerBody"):
-			target = main.get_node("PlayerBody")
+		if target != null:
 			if abs(body.get_pos().distance_to(target.get_pos())) > followDist:
 				currentAction = "walk"
 			else:
