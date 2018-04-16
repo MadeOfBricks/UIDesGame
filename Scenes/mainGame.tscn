@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://Scripts/mainGame.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Background/btileset.res" type="TileSet" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Sound/countdown.wav" type="Sample" id=10]
 [ext_resource path="res://Scripts/countdown.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/Menus/DBText.gd" type="Script" id=12]
+[ext_resource path="res://Packed/RushEnemy.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Packed/PokeEnemy.tscn" type="PackedScene" id=14]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -136,6 +138,12 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script/script = ExtResource( 12 )
+
+[node name="RushEnemy" parent="." instance=ExtResource( 13 )]
+
+transform/pos = Vector2( 344.598, 210.526 )
+
+[node name="PokeEnemy" parent="." instance=ExtResource( 14 )]
 
 [connection signal="released" from="Pause" to="." method="_on_Pause_released"]
 

@@ -12,7 +12,9 @@ onready var playerSprites = [
 
 onready var enemies = [
 	get_node("FollowerBody"),
-	get_node("FollowerBody1")
+	get_node("FollowerBody1"),
+	get_node("RushEnemy"),
+	get_node("PokeEnemy")
 ]
 
 
