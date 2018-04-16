@@ -36,6 +36,8 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_Pause_released():
+func _on_Pause_pressed():
 	var item = preload("res://Packed/pauseMenu.tscn").instance()
 	get_parent().add_child(item)
+	get_tree().set_pause(true)
+	

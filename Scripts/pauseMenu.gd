@@ -5,13 +5,13 @@ extends Node
 # var b = "textvar"
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
+	#get_tree().paused = true
 	pass
 
 
 func _on_Continue_released():
 	queue_free()
+	get_tree().set_pause(false)
 
 
 func _on_Quit_released():
