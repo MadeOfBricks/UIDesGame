@@ -6,11 +6,12 @@ onready var mySprite = body.get_node("Sprite")
 onready var timer = get_node("Timer")
 var walkSpeed = 200
 var turnSpeed = 2
-var spikeSpeed = 50
+var spikeSpeed = 150
 var followDist = 150
 var lastFrame = 0
 var currentAction = ""
 var walkVec = Vector2(1,0)
+var walkDev = (randi() % 3) / 2
 
 onready var lastPivot = body.get_pos()
 onready var target = null
@@ -25,6 +26,9 @@ signal body_attack
 
 #Set process
 func _ready():
+	var neg = randi()%1
+	if neg:
+		walkDev *= -1
 	currentAction = "stand"
 	timer.connect("timeout",self,"_on_timeout")
 	set_process(true)
@@ -47,6 +51,7 @@ func _process(delta):
 			var inst = spike.instance()
 			inst.velocity = dirVec.normalized() * spikeSpeed * delta
 			inst.set_pos(body.get_pos())
+			inst.set_rot(rad2deg(inst.velocity.angle()))
 			main.add_child(inst)
 	
 	if target == null:
@@ -68,7 +73,7 @@ func _process(delta):
 	
 	if currentAction == "walk":
 		var dirVec = target.get_pos() - body.get_pos()
-		
+		dirVec = dirVec.rotated(walkDev)
 		
 		walkVec = dirVec
 		

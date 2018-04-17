@@ -1,7 +1,11 @@
 extends Node2D
 var gameState = true
+
+onready var global = get_tree().get_root().get_node("/root/global")
+
 onready var player = get_node("PlayerBody")
 onready var dBText = get_node("DBText")
+onready var label = get_node("Label")
 
 onready var playerSprites = [
 	preload("res://Packed/PlayerSprites/Player_Sprite_Bk.tscn"),
@@ -43,4 +47,6 @@ func _on_Pause_pressed():
 
 func _remove_enemy(en):
 	enemies.remove(enemies.find(en))
+	if enemies.size() == 0:
+		label.set_text("Move to next area")
 

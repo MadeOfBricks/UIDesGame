@@ -5,7 +5,7 @@ extends VBoxContainer
 # var b = "textvar"
 
 func _ready():
-	pass
+	randomize()
 
 func _on_Play_released():
 	var file = File.new()

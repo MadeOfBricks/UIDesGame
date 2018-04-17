@@ -24,15 +24,9 @@ func _on_body_dash(vec):
 
 
 
-func _on_HitDetector_body_enter( body ):
-	print("fucking something")
-	if body.is_in_group("enemyProjectiles"):
-		health -= 1
-		print(health)
-
 
 func _on_HitDetector_area_enter( area ):
-	if area.is_in_group("enemyProjectiles"):
+	if area.is_in_group("enemyProjectiles")&& brain.currentAction != "dashTowards":
 		area.queue_free()
 		health -= 1
 		print("ouch")

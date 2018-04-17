@@ -12,6 +12,7 @@ extents = Vector2( 10, 10 )
 "enemyProjectiles",
 ]]
 
+transform/scale = Vector2( 2, 2 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 0.534022, 0, 0, 0.438257, 0, 0 )
