@@ -27,10 +27,6 @@ func _on_Quit_released():
 	var dir = Directory.new()
 	dir.remove("res://Packed/saveFile.sav")
 	pData["pScore"] = 0
-<<<<<<< HEAD
-=======
-	#pData["pScore"] = main.score
->>>>>>> 70279448d22bd757fa53448878ea4be3bb6a56a3
 	
 	var file = File.new()
 	file.open("res://Packed/saveFile.sav", File.WRITE) 
