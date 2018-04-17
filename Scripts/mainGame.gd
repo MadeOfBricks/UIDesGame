@@ -9,7 +9,7 @@ onready var playerSprites = [
 	preload("res://Packed/PlayerSprites/Player_Sprite_Gn.tscn"),
 	preload("res://Packed/PlayerSprites/Player_Sprite_Blu.tscn")
 ]
-
+var score = 0
 
 var pData = {}
 
@@ -23,6 +23,8 @@ func _ready():
 	pData.parse_json(text)
 	file.close()
 	var spriteNode = playerSprites[pData["pColor"]].instance()
+	score = pData["pScore"]
+	get_node("Score").set_text("Score: %d" % score)
 	get_node("PlayerBody/Sprite").queue_free()
 	player.add_child(spriteNode)
 	player.get_node("Brain").mySprite = spriteNode
@@ -36,11 +38,13 @@ func _process(delta):
 
 func _on_Pause_pressed():
 	var item = preload("res://Packed/pauseMenu.tscn").instance()
-	get_parent().add_child(item)
+	add_child(item)
 	get_tree().set_pause(true)
 
 
 
 func _remove_enemy(en):
+	score += 10
+	get_node("Score").set_text("Score: %d" % score)
 	enemies.remove(enemies.find(en))
 
