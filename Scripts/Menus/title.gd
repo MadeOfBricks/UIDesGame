@@ -9,9 +9,9 @@ func _ready():
 
 func _on_Play_released():
 	var dir = Directory.new()
-	dir.remove("res://Packed/saveFile.sav")
+	dir.remove("user://savegame.sav")
 	var file = File.new()
-	if not file.file_exists("res://Packed/saveFile.sav"):
+	if not file.file_exists("user://savegame.sav"):
 		get_tree().change_scene("res://Scenes/characterSelect.tscn")
 	else:
 		get_tree().change_scene("res://Scenes/mainGame.tscn")

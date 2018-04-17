@@ -19,18 +19,18 @@ func _on_Quit_released():
 	queue_free()
 	
 	var file = File.new()
-	file.open("res://Packed/saveFile.sav", File.READ)
+	file.open_encrypted_with_pass("user://savegame.bin", File.READ, OS.get_unique_ID())
 	var text = file.get_as_text()
 	pData.parse_json(text)
 	file.close()
 	
 	var dir = Directory.new()
-	dir.remove("res://Packed/saveFile.sav")
+	dir.remove("user://savegame.sav")
 	pData["pScore"] = 0
 	pData["pHealth"] = 3
 	
 	var file = File.new()
-	file.open("res://Packed/saveFile.sav", File.WRITE) 
+	file.open_encrypted_with_pass("user://savegame.bin", File.WRITE, OS.get_unique_ID())
 	file.store_line(pData.to_json())
 	file.close()
 	
