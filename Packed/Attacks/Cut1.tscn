@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://Scripts/Attacks/Cut1.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Player/Cut5.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Player/Cut6.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/Cut7.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/Cut8.png" type="Texture" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+height = 20.0
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Cut1",
+"speed": 30.0
+} ]
+
+[node name="Cut1" type="Area2D"]
+
+z/z = 1
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.70788, 0, 0, 0.998561, 15.2435, -5.57994 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 0.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 15372
+collision/mask = 15372
+script/script = ExtResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+
+transform/pos = Vector2( 0.17482, 0.17482 )
+frames = SubResource( 2 )
+animation = "Cut1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 15.2435, -5.57994 )
+transform/scale = Vector2( 1.70788, 0.998561 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+
