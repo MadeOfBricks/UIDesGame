@@ -24,7 +24,7 @@ onready var enemies = get_tree().get_nodes_in_group("enemies")
 
 func _ready():
 	var file = File.new()
-	file.open("res://Packed/saveFile.sav", File.READ)
+	file.open_encrypted_with_pass("user://savegame.bin", File.READ, OS.get_unique_ID())
 	var text = file.get_as_text()
 	pData.parse_json(text)
 	file.close()
@@ -47,18 +47,18 @@ func _process(delta):
 	var yOut = player.get_pos().y > OS.get_window_size().y || player.get_pos().y < 0
 	if xOut || yOut:
 		var file = File.new()
-		file.open("res://Packed/saveFile.sav", File.READ)
+		file.open_encrypted_with_pass("user://savegame.bin", File.READ, OS.get_unique_ID())
 		var text = file.get_as_text()
 		pData.parse_json(text)
 		file.close()
 	
 		var dir = Directory.new()
-		dir.remove("res://Packed/saveFile.sav")
+		dir.remove("user://savegame.sav")
 		pData["pScore"] = score
 		pData["pHealth"] = player.health
 	
 		var file = File.new()
-		file.open("res://Packed/saveFile.sav", File.WRITE) 
+		file.open_encrypted_with_pass("user://savegame.bin", File.WRITE, OS.get_unique_ID())
 		file.store_line(pData.to_json())
 		file.close()
 		get_tree().reload_current_scene()

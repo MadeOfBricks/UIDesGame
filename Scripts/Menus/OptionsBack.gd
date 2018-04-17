@@ -20,7 +20,7 @@ func _on_Back_released():
 
 func _on_clearData_released():
 	var dir = Directory.new()
-	dir.remove("res://Packed/saveFile.sav")
+	dir.remove("user://savegame.sav")
 
 	add_color_override("font_color", Color(207,0,0))
 	set("custom_colors/font_color", Color(207,0,0))
