@@ -8,7 +8,7 @@ signal attack_input
 
 func _ready():
 	set_pos(Vector2(OS.get_window_size().x/2,50))
-	debug._set_text(String(get_pos()))
+	#debug._set_text(String(get_pos()))
 
 func _draw():
 	set_size(Vector2(OS.get_window_size().x/2,OS.get_window_size().y))

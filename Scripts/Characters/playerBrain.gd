@@ -58,20 +58,21 @@ func _handle_input(delta):
 	if ((Input.is_action_pressed("MeleeAttack") || controllerAttack) && attackReady && actionFree):
 		attackReady = false
 		
-		currentAction = "dashTowards"
-		dashTar = null
-		for en in main.enemies:
-			if dashTar != null && en != null:
-				var enDist = body.get_pos().distance_squared_to(en.get_pos())
-				var tarDist = body.get_pos().distance_squared_to(dashTar.get_pos())
-				if enDist < tarDist:
-					dashTar = en
-			elif en != null:
-				#print(en.get_name())
-				if body.get_pos().distance_to(en.get_pos()) < 200 :
-					dashTar = en
-		if dashTar == null:
-			currentAction = "stand"
+		if currentAction != "dashTowards":
+			currentAction = "dashTowards"
+			dashTar = null
+			for en in main.enemies:
+				if dashTar != null && en != null:
+					var enDist = body.get_pos().distance_squared_to(en.get_pos())
+					var tarDist = body.get_pos().distance_squared_to(dashTar.get_pos())
+					if enDist < tarDist:
+						dashTar = en
+				elif en != null:
+					#print(en.get_name())
+					if body.get_pos().distance_to(en.get_pos()) < 200 :
+						dashTar = en
+			if dashTar == null:
+				currentAction = "stand"
 		
 	elif currentAction != "dashTowards" && currentAction != "meleeAttack" && currentAction != "meleeCoolDown":
 		currentAction = "stand"
@@ -85,7 +86,7 @@ func _handle_input(delta):
 			var dirVec = adjustVec - body.get_pos()
 			dirVec = dirVec.normalized() * dashSpeed * delta
 			emit_signal("body_dash",dirVec)
-			if body.get_pos().distance_squared_to(adjustVec) < dashSpeed * delta * 1.2:
+			if body.get_pos().distance_squared_to(adjustVec) < dashSpeed + 50:
 				body.set_pos(adjustVec)
 				currentAction = "meleeAttack"
 				if mySprite.get_scale().x != approachSide:

@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var brain = get_node("Brain")
+onready var global = get_tree().get_root().get_node("/root/global")
 
 onready var hitDetector = get_node("HitDetector")
 onready var health = 3
@@ -35,7 +36,9 @@ func _on_HitDetector_area_enter( area ):
 		print("ouch")
 		if health <= 0:
 			_die()
+			
 
 
 func _die():
 	queue_free()
+	global.enemyNumber = 0
