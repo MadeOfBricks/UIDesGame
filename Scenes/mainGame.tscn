@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://Scripts/mainGame.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Background/btileset.res" type="TileSet" id=2]
@@ -6,14 +6,12 @@
 [ext_resource path="res://Scripts/Menus/sGameTimer.gd" type="Script" id=4]
 [ext_resource path="res://Fonts/titleFont.fnt" type="BitmapFont" id=5]
 [ext_resource path="res://Packed/Sar_Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Packed/Wall.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Sprites/pause.png" type="Texture" id=8]
-[ext_resource path="res://Sound/countdown.wav" type="Sample" id=9]
-[ext_resource path="res://Scripts/countdown.gd" type="Script" id=10]
-[ext_resource path="res://Scripts/Menus/DBText.gd" type="Script" id=11]
-[ext_resource path="res://Packed/RushEnemy.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Packed/PokeEnemy.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Fonts/8bitHeader.fnt" type="BitmapFont" id=14]
+[ext_resource path="res://Sprites/pause.png" type="Texture" id=7]
+[ext_resource path="res://Sound/countdown.wav" type="Sample" id=8]
+[ext_resource path="res://Scripts/countdown.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/Menus/DBText.gd" type="Script" id=10]
+[ext_resource path="res://Fonts/8bitHeader.fnt" type="BitmapFont" id=11]
+[ext_resource path="res://Scripts/spawner.gd" type="Script" id=12]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -21,7 +19,7 @@ samples/countdown = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 9 )
+"sample": ExtResource( 8 )
 }
 
 [node name="Main" type="Node2D"]
@@ -78,8 +76,6 @@ max_lines_visible = -1
 
 transform/pos = Vector2( 703.188, 355.368 )
 
-[node name="Wall" parent="." instance=ExtResource( 7 )]
-
 [node name="Pause" type="TextureButton" parent="."]
 
 process/pause_mode = 2
@@ -95,7 +91,7 @@ toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 8 )
+textures/normal = ExtResource( 7 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
@@ -115,7 +111,7 @@ default/filter/gain = 1.0
 default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
-script/script = ExtResource( 10 )
+script/script = ExtResource( 9 )
 
 [node name="DBText" type="Label" parent="."]
 
@@ -131,13 +127,7 @@ text = "Test"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = ExtResource( 11 )
-
-[node name="RushEnemy" parent="." instance=ExtResource( 12 )]
-
-transform/pos = Vector2( 344.598, 210.526 )
-
-[node name="PokeEnemy" parent="." instance=ExtResource( 13 )]
+script/script = ExtResource( 10 )
 
 [node name="Health" type="Label" parent="."]
 
@@ -149,7 +139,7 @@ margin/left = 107.0
 margin/top = 25.0
 margin/right = 153.0
 margin/bottom = 52.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0.0628662, 0.804688, 0, 1 )
 text = "HP:"
 percent_visible = 1.0
@@ -178,11 +168,15 @@ margin/left = 62.0
 margin/top = 64.0
 margin/right = 160.0
 margin/bottom = 91.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 11 )
 text = "Score: 0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Spawner" type="Node" parent="."]
+
+script/script = ExtResource( 12 )
 
 [connection signal="pressed" from="Pause" to="." method="_on_Pause_pressed"]
 

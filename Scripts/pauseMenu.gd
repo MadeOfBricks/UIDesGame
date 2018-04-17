@@ -26,7 +26,7 @@ func _on_Quit_released():
 	
 	var dir = Directory.new()
 	dir.remove("res://Packed/saveFile.sav")
-	pData["pScore"] = main.score
+	pData["pScore"] = 0
 	
 	var file = File.new()
 	file.open("res://Packed/saveFile.sav", File.WRITE) 

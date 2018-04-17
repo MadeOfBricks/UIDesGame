@@ -1,14 +1,23 @@
-extends Node2D
+extends Node
 
 onready var global = get_tree().get_root().get_node("/root/global")
+onready var main = get_parent()
+
+onready var enemies = [
+	preload("res://Packed/PokeEnemy.tscn"),
+	preload("res://Packed/RushEnemy.tscn")
+]
 
 func _ready():
-	var x = 0
-	var y = 0
+	var enInt 
 	global.enemyNumber += 1
-	while x < OS.get_window_size().x:
-		while y < OS.get_window_size().y:
-			print(x + ", ", y)
-			y += 32
-		x += 32
+	for i in range(global.enemyNumber):
+		enInt = randi()%1
+		var en = enemies[enInt].instance()
+		var randX = randi() % int(OS.get_window_size().x)
+		var randY = randi() % int(OS.get_window_size().y)
+		en.set_pos(Vector2(randX,randY))
+		main.call_deferred("add_child",en)
+		main.call_deferred("_add_enemy",en)
+		print(en.get_name() + " placed")
 	

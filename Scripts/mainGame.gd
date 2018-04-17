@@ -37,7 +37,10 @@ func _ready():
 
 
 func _process(delta):
-	pass
+	var xOut = player.get_pos().x > OS.get_window_size().x || player.get_pos().x < 0
+	var yOut = player.get_pos().y > OS.get_window_size().y || player.get_pos().y < 0
+	if xOut || yOut:
+		get_tree().reload_current_scene()
 
 
 func _on_Pause_pressed():
@@ -53,4 +56,7 @@ func _remove_enemy(en):
 	enemies.remove(enemies.find(en))
 	if enemies.size() == 0:
 		label.set_text("Move to next area")
+		set_process(true)
 
+func _add_enemy(en):
+	enemies.append(en)
