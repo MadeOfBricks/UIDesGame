@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://Scripts/mainGame.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Background/btileset.res" type="TileSet" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Fonts/8bitHeader.fnt" type="BitmapFont" id=12]
 [ext_resource path="res://Scripts/spawner.gd" type="Script" id=13]
 [ext_resource path="res://Sprites/pause.png" type="Texture" id=14]
+[ext_resource path="res://Packed/MobileController.tscn" type="PackedScene" id=15]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -185,6 +186,8 @@ textures/normal = ExtResource( 14 )
 params/resize_mode = 0
 params/scale = Vector2( 2, 2 )
 params/stretch_mode = 0
+
+[node name="MobileController" parent="." instance=ExtResource( 15 )]
 
 [connection signal="pressed" from="Pause" to="." method="_on_Pause_pressed"]
 

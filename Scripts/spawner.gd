@@ -12,7 +12,7 @@ func _ready():
 	var enInt 
 	global.enemyNumber += 1
 	for i in range(global.enemyNumber):
-		enInt = randi()%1
+		enInt = randi()%2
 		var en = enemies[enInt].instance()
 		var randX = randi() % int(OS.get_window_size().x)
 		var randY = randi() % int(OS.get_window_size().y)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Scripts/Menus/TrainQuit.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/titleFont.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://Fonts/8bitHeader.fnt" type="BitmapFont" id=3]
 
 [node name="Training" type="Node2D"]
 
@@ -36,6 +37,25 @@ shortcut = null
 text = "Quit"
 flat = true
 items = [  ]
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 135.0
+margin/top = 49.0
+margin/right = 850.0
+margin/bottom = 384.0
+custom_fonts/font = ExtResource( 3 )
+text = "Drag on the left side of the screen to walk.
+Tap on the right side of the screen to attack.
+While moving during your attack, you cannot be hit.
+Wipe out each enemy before moving to the next area."
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="released" from="TrainQuit/Quit" to="TrainQuit" method="_on_Quit_released"]
 
