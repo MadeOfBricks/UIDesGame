@@ -40,6 +40,21 @@ func _process(delta):
 	var xOut = player.get_pos().x > OS.get_window_size().x || player.get_pos().x < 0
 	var yOut = player.get_pos().y > OS.get_window_size().y || player.get_pos().y < 0
 	if xOut || yOut:
+		var file = File.new()
+		file.open("res://Packed/saveFile.sav", File.READ)
+		var text = file.get_as_text()
+		pData.parse_json(text)
+		file.close()
+	
+		var dir = Directory.new()
+		dir.remove("res://Packed/saveFile.sav")
+		pData["pScore"] = score
+		pData["pHealth"] = player.health
+	
+		var file = File.new()
+		file.open("res://Packed/saveFile.sav", File.WRITE) 
+		file.store_line(pData.to_json())
+		file.close()
 		get_tree().reload_current_scene()
 
 
