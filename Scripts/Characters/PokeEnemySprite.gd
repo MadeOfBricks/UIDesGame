@@ -19,9 +19,7 @@ func _on_body_walk(vec):
 
 func _process(delta):
 	timeElapsed = timeElapsed + delta
-	
-	#THIS CODE PREVENTS THE ATTACK ANIMATION FROM RUNNING
-	
+		
 	if brain.currentAction == "stand":
 		set_animation("stand")
 

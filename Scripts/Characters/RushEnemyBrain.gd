@@ -2,14 +2,18 @@ extends Node2D
 
 onready var body = get_parent()
 onready var main = body.get_parent()
+onready var mySprite = body.get_node("Sprite")
 onready var timer = get_node("Timer")
 var walkSpeed = 200
 var turnSpeed = 2
+var stormSpeed = 50
+var followDist = 150
+var lastFrame = 0
 var currentAction = ""
 var walkVec = Vector2(1,0)
 
 onready var lastPivot = body.get_pos()
-onready var target
+onready var target = null
 
 
 onready var printStrings = []
@@ -17,6 +21,7 @@ onready var printStrings = []
 
 #Signals for sprite
 signal body_walk
+signal body_attack
 
 #Set process
 func _ready():
@@ -29,13 +34,38 @@ func _ready():
 #Use delta time
 func _process(delta):
 	if main.has_node("PlayerBody"):
-		target = main.get_node("PlayerBody")
-		if abs(body.get_pos().distance_to(target.get_pos())) > 50:
-			currentAction = "walk"
+			if target == null:
+				target = main.get_node("PlayerBody")
+	else:
+		target = null
+	
+	if currentAction == "attackBegin" && target != null:
+		#if lastFrame != mySprite.get_frame() && mySprite.get_frame() == 2:
+			currentAction = "attack"
+			print("attack")
+			var dirVec = target.get_pos() - body.get_pos()
+			var storm = preload("res://Packed/Storm.tscn")
+			var inst = storm.instance()
+			inst.velocity = dirVec.normalized() * stormSpeed * delta
+			inst.set_pos(body.get_pos())
+			main.add_child(inst)
+	
+	if target == null:
+		currentAction == "stand"
+	
+	if mySprite.get_animation() != "attack" && currentAction == "attack":
+		currentAction = "stand"
+	
+	#Walking
+	if currentAction != "attack" && currentAction != "attackBegin" && currentAction != "attackCoolDown":
+		if target != null:
+			if abs(body.get_pos().distance_to(target.get_pos())) > followDist:
+				currentAction = "walk"
+			else:
+				currentAction = "stand"
 		else:
 			currentAction = "stand"
-	else:
-		currentAction = "stand"
+	
 	
 	if currentAction == "walk":
 		var dirVec = target.get_pos() - body.get_pos()
@@ -51,8 +81,9 @@ func _process(delta):
 			walkVec = n.slide(walkVec)
 		
 		emit_signal("body_walk",newPosVec)
+	
+	lastFrame = mySprite.get_frame()
 
 func _on_timeout():
-	for strings in printStrings:
-		print(strings)
-	printStrings.clear()
+	currentAction = "attackBegin"
+	mySprite.set_animation("attack")
