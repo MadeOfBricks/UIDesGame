@@ -34,15 +34,15 @@ animations = [ {
 "name": "stand",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "DashIn",
-"speed": 30.0
-}, {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "DashIn",
+"speed": 30.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
