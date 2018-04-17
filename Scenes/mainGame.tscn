@@ -184,7 +184,7 @@ script/script = ExtResource( 12 )
 
 [node name="Left" type="Control" parent="MobileController"]
 
-visibility/opacity = 0.2
+visibility/opacity = 0.0
 visibility/self_opacity = 0.2
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -198,7 +198,7 @@ script/script = ExtResource( 13 )
 
 [node name="Right" type="Control" parent="MobileController"]
 
-visibility/opacity = 0.2
+visibility/opacity = 0.0
 visibility/self_opacity = 0.2
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -211,5 +211,9 @@ margin/bottom = 40.0
 script/script = ExtResource( 14 )
 
 [connection signal="pressed" from="Pause" to="." method="_on_Pause_pressed"]
+
+[connection signal="input_event" from="MobileController/Left" to="MobileController/Left" method="_on_Left_input_event"]
+
+[connection signal="input_event" from="MobileController/Right" to="MobileController/Right" method="_on_Right_input_event"]
 
 

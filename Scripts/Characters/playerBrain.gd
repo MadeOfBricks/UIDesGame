@@ -17,6 +17,8 @@ onready var lvTimer = get_parent().get_parent().get_node("Timer")
 onready var attacks = [
 	preload("res://Packed/Attacks/Cut1.tscn")
 ]
+var controllerAttack = false
+var controllerWalk = false
 
 var currentAttacks = [
 	
@@ -24,6 +26,7 @@ var currentAttacks = [
 
 var attackReady = true;
 
+var walkVec = Vector2(0,0)
 var walkSpeed = 200
 var dashSpeed = 800
 var dashRange = 100
@@ -36,7 +39,8 @@ signal body_dash
 #Set process
 func _ready():
 	currentAction = "stand"
-	controller.connect("walk_input",self,"_on_walk_input")
+	controller.get_node("Left").connect("walk_input",self,"_on_walk_input")
+	controller.get_node("Right").connect("attack_input",self,"_on_attack_input")
 	set_process(true)
 	pass
 
@@ -51,8 +55,7 @@ func _handle_input(delta):
 	timeSinceLastFrame += delta
 	#Attack Start
 	var actionFree = currentAction != "meleeAttack" && currentAction != "dashTowards"
-	if Input.is_action_pressed("MeleeAttack") && attackReady && actionFree:
-		debug._add_line("press detected")
+	if ((Input.is_action_pressed("MeleeAttack") || controllerAttack) && attackReady && actionFree):
 		attackReady = false
 		
 		currentAction = "dashTowards"
@@ -105,9 +108,9 @@ func _handle_input(delta):
 		if !Input.is_action_pressed("MeleeAttack"):
 			attackReady = true;
 
+	controllerAttack = false
 	
 	
-	var walkVec = Vector2(0,0)
 	
 	if currentAction != "meleeAttack" && currentAction != "meleeCoolDown" && currentAction != "dashTowards":
 		if Input.is_action_pressed("Up"):
@@ -123,8 +126,10 @@ func _handle_input(delta):
 			walkVec.x += 5
 			currentAction = "walk"
 		
+		if controllerWalk:
+			currentAction = "walk"
 		
-	
+	controllerWalk = false
 	
 	
 	if currentAction =="walk":
@@ -136,7 +141,13 @@ func _handle_input(delta):
 			walkVec = n.slide(walkVec)
 		
 		emit_signal("body_walk",newPosVec)
+	walkVec = Vector2(0,0)
 	
 
-func _on_walk_input(ev):
-	debug._add_line(String(ev.float_x))
+func _on_walk_input(vec):
+	controllerWalk = true
+	walkVec = vec
+
+func _on_attack_input():
+	debug._set_text("Player received signal")
+	controllerAttack = true

@@ -90,5 +90,4 @@ func _process(delta):
 
 func _on_timeout():
 	currentAction = "attackBegin"
-	print("poke")
 	mySprite.set_animation("attack")
