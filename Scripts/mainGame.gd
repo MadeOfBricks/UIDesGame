@@ -10,6 +10,8 @@ onready var playerSprites = [
 	preload("res://Packed/PlayerSprites/Player_Sprite_Blu.tscn")
 ]
 
+var pData = {}
+
 onready var enemies = [
 	get_node("FollowerBody"),
 	get_node("FollowerBody1"),
@@ -23,10 +25,11 @@ func _ready():
 		dBText._add_line("text" + String(i))
 		
 	var file = File.new()
-	file.open("res://Packed/saveFile.txt", File.READ)
-	var colorNo = file.get_var()
+	file.open("res://Packed/saveFile.sav", File.READ)
+	var text = file.get_as_text()
+	pData.parse_json(text)
 	file.close()
-	var spriteNode = playerSprites[colorNo].instance()
+	var spriteNode = playerSprites[pData["pColor"]].instance()
 	get_node("PlayerBody/Sprite").queue_free()
 	player.add_child(spriteNode)
 	player.get_node("Brain").mySprite = spriteNode
@@ -36,6 +39,8 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_Pause_released():
+func _on_Pause_pressed():
 	var item = preload("res://Packed/pauseMenu.tscn").instance()
 	get_parent().add_child(item)
+	get_tree().set_pause(true)
+	
