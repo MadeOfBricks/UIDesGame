@@ -6,6 +6,11 @@ var spawn_items = [
     preload("res://Sprites/ReapyB_0.png")
 ]
 
+var pData = {
+    "pColor" : 0,
+    "pScore" : 0
+}
+
 
 var count = 0
 # class member variables go here, for example:
@@ -32,13 +37,20 @@ func _on_ButtonLeft_released():
 	print(count)
 
 
-func _on_ButtonStart_released():
+func _on_Start_released():
+	pData.pColor = count
 	var file = File.new()
-	file.open("res://Packed/saveFile.txt", File.WRITE) 
-	file.store_var(count)
+	file.open("res://Packed/saveFile.sav", File.WRITE) 
+	file.store_line(pData.to_json())
 	file.close()
 	get_tree().change_scene("res://Scenes/mainGame.tscn")
 
 
-func _on_Button_released():
+
+func _on_Start_pressed():
+	get_node("Loading").set_text("Loading...")
+
+
+func _on_Back_released():
 	get_tree().change_scene("res://Scenes/titleScreen.tscn")
+

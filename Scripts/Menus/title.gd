@@ -5,25 +5,25 @@ extends VBoxContainer
 # var b = "textvar"
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
 
-
-func _on_Play_pressed():
+func _on_Play_released():
 	var file = File.new()
-	if not file.file_exists("res://Packed/saveFile.txt"):
+	if not file.file_exists("res://Packed/saveFile.sav"):
 		get_tree().change_scene("res://Scenes/characterSelect.tscn")
 	else:
 		get_tree().change_scene("res://Scenes/mainGame.tscn")
-	
 
 
-func _on_Training_pressed():
+func _on_Training_released():
 	print("Training Button Pressed...")
 	get_tree().change_scene("res://Scenes/trainingScreen.tscn")
 
 
-func _on_Options_pressed():
+func _on_Options_released():
 	print("Options Button Pressed")
 	get_tree().change_scene("res://Scenes/optionsScreen.tscn")
+
+
+func _on_Play_pressed():
+	get_node("../Loading").set_text("Loading...")

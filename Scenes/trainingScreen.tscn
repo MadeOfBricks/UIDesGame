@@ -3,7 +3,6 @@
 [ext_resource path="res://Scripts/Menus/TrainQuit.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/titleFont.fnt" type="BitmapFont" id=2]
 
-
 [node name="Training" type="Node2D"]
 
 [node name="TrainQuit" type="VBoxContainer" parent="."]
