@@ -15,6 +15,8 @@ onready var playerSprites = [
 ]
 var score = 0
 
+var HealthCo = [[1,0,0],[1,1,0],[0,1,0]]
+
 var pData = {}
 
 
@@ -28,6 +30,10 @@ func _ready():
 	file.close()
 	var spriteNode = playerSprites[pData["pColor"]].instance()
 	score = pData["pScore"]
+	player.health = pData["pHealth"]
+	var vec = Vector2((pData["pHealth"] * 50), 17)
+	get_node("HealthBar").set_size(vec)
+	get_node("HealthBar").set_frame_color(Color(HealthCo[player.health-1][0], HealthCo[player.health-1][1], HealthCo[player.health - 1][2]))
 	get_node("Score").set_text("Score: %d" % score)
 	get_node("PlayerBody/Sprite").queue_free()
 	player.add_child(spriteNode)
@@ -40,6 +46,21 @@ func _process(delta):
 	var xOut = player.get_pos().x > OS.get_window_size().x || player.get_pos().x < 0
 	var yOut = player.get_pos().y > OS.get_window_size().y || player.get_pos().y < 0
 	if xOut || yOut:
+		var file = File.new()
+		file.open("res://Packed/saveFile.sav", File.READ)
+		var text = file.get_as_text()
+		pData.parse_json(text)
+		file.close()
+	
+		var dir = Directory.new()
+		dir.remove("res://Packed/saveFile.sav")
+		pData["pScore"] = score
+		pData["pHealth"] = player.health
+	
+		var file = File.new()
+		file.open("res://Packed/saveFile.sav", File.WRITE) 
+		file.store_line(pData.to_json())
+		file.close()
 		get_tree().reload_current_scene()
 
 

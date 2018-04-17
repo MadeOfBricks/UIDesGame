@@ -8,7 +8,8 @@ var spawn_items = [
 
 var pData = {
     "pColor" : 0,
-    "pScore" : 0
+    "pScore" : 0,
+    "pHealth" : 3
 }
 
 
