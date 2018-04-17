@@ -20,6 +20,7 @@ signal body_walk
 
 #Set process
 func _ready():
+	currentAction = "stand"
 	timer.connect("timeout",self,"_on_timeout")
 	set_process(true)
 	pass
@@ -27,11 +28,14 @@ func _ready():
 #Set currentAction and handle input for walking
 #Use delta time
 func _process(delta):
-	currentAction = "stand"
 	if main.has_node("PlayerBody"):
 		target = main.get_node("PlayerBody")
 		if abs(body.get_pos().distance_to(target.get_pos())) > 50:
 			currentAction = "walk"
+		else:
+			currentAction = "stand"
+	else:
+		currentAction = "stand"
 	
 	if currentAction == "walk":
 		var dirVec = target.get_pos() - body.get_pos()

@@ -11,3 +11,4 @@ func _ready():
 
 func _add_line(string):
 	set_text(get_text() + "\n" + string + "Lines:" + String(get_line_count() - 1))
+

@@ -5,7 +5,6 @@ extends Node
 # var b = "textvar"
 
 func _ready():
-	#get_tree().paused = true
 	pass
 
 

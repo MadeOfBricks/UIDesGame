@@ -1,0 +1,94 @@
+[gd_scene load_steps=20 format=1]
+
+[ext_resource path="res://Scripts/Characters/RushEnemyBody.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/ModRush/Rush1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/ModRush/Rush10.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/ModRush/Rush11.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/ModRush/Rush12.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/ModRush/Rush13.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/ModRush/Rush14.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/ModRush/Rush15.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/ModRush/Rush16.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/ModRush/Rush17.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/ModRush/Rush18.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/ModRush/Rush5.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/ModRush/Rush6.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/ModRush/Rush7.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/ModRush/Rush8.png" type="Texture" id=15]
+[ext_resource path="res://Scripts/Characters/RushEnemySprite.gd" type="Script" id=16]
+[ext_resource path="res://Scripts/Characters/RushEnemyBrain.gd" type="Script" id=17]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.5041, 10 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "stand",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "Knockdown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "death",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "rush",
+"speed": 5.0
+} ]
+
+[node name="RushEnemy" type="KinematicBody2D" groups=[
+"enemies",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.11819, 0, 0, 2.07643, -2.0739, -0.857211 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 2 )
+animation = "stand"
+playing = true
+script/script = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -2.0739, -0.857211 )
+transform/scale = Vector2( 1.11819, 2.07643 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Brain" type="Node2D" parent="."]
+
+transform/pos = Vector2( 0.85607, -1.5206 )
+transform/scale = Vector2( 1.03544, 0.985323 )
+script/script = ExtResource( 17 )
+
+[node name="Timer" type="Timer" parent="Brain"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+

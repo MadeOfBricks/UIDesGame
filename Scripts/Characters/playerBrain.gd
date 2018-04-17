@@ -56,13 +56,15 @@ func _handle_input(delta):
 		currentAction = "dashTowards"
 		dashTar = null
 		for en in main.enemies:
-			if dashTar != null:
+			if dashTar != null && en != null:
 				var enDist = body.get_pos().distance_squared_to(en.get_pos())
 				var tarDist = body.get_pos().distance_squared_to(dashTar.get_pos())
 				if enDist < tarDist:
 					dashTar = en
-			elif body.get_pos().distance_to(en.get_pos()) < 200:
-				dashTar = en
+			elif en != null:
+				#print(en.get_name())
+				if body.get_pos().distance_to(en.get_pos()) < 200 :
+					dashTar = en
 		if dashTar == null:
 			currentAction = "stand"
 		
@@ -70,10 +72,10 @@ func _handle_input(delta):
 		currentAction = "stand"
 	
 	if currentAction == "dashTowards":
-		if mySprite.get_animation() != "DashIn":
-			mySprite.set_animation("DashIn")
 		if dashTar != null:
-			var adjustX = dashTar.get_pos().x - mySprite.get_scale().x * 60
+			var approachSide = sign(dashTar.get_pos().x - body.get_pos().x)
+			
+			var adjustX = dashTar.get_pos().x - approachSide * 60
 			var adjustVec = Vector2(adjustX,dashTar.get_pos().y)
 			var dirVec = adjustVec - body.get_pos()
 			dirVec = dirVec.normalized() * dashSpeed * delta
@@ -81,6 +83,8 @@ func _handle_input(delta):
 			if body.get_pos().distance_squared_to(adjustVec) < dashSpeed * delta * 1.2:
 				body.set_pos(adjustVec)
 				currentAction = "meleeAttack"
+				if mySprite.get_scale().x != approachSide:
+					mySprite.scale(Vector2(-1,1))
 				mySprite.set_animation("Cut1")
 				mySprite.set_frame(0)
 	#Attack Running
@@ -91,12 +95,10 @@ func _handle_input(delta):
 			cut.scale(scale)
 			cut.get_node("Sprite").play()
 			get_parent().add_child(cut)
-			print("Attack instantiated")
 			currentAction = "meleeCoolDown"
 	elif currentAction == "meleeCoolDown":
 		if mySprite.get_animation() =="stand":
 			currentAction = "stand"
-		#print(currentAction)
 	elif currentAction == "stand":
 		if !Input.is_action_pressed("MeleeAttack"):
 			attackReady = true;
@@ -105,7 +107,7 @@ func _handle_input(delta):
 	
 	var walkVec = Vector2(0,0)
 	
-	if currentAction != "meleeAttack" && currentAction != "meleeCoolDown":
+	if currentAction != "meleeAttack" && currentAction != "meleeCoolDown" && currentAction != "dashTowards":
 		if Input.is_action_pressed("Up"):
 			walkVec.y -= 5
 			currentAction = "walk"

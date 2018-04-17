@@ -15,6 +15,9 @@ func _on_body_walk(vec):
 	move(vec)
 
 func _die():
-	var meInMain = main.enemies.find(self)
-	main.enemies.remove(meInMain)
+	#var meInMain = main.enemies.find(self)
+	#main.enemies.remove(meInMain)
+	
+	main._remove_enemy(self)
+	
 	queue_free()
