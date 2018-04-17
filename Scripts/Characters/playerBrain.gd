@@ -3,6 +3,7 @@ extends Node2D
 onready var body = get_parent()
 onready var main = body.get_parent()
 onready var debug = main.get_node("DBText")
+onready var controller = main.get_node("MobileController")
 
 onready var mySprite = body.get_node("Sprite")
 onready var mySpriteFrames = mySprite.get_sprite_frames()
@@ -35,6 +36,7 @@ signal body_dash
 #Set process
 func _ready():
 	currentAction = "stand"
+	controller.connect("walk_input",self,"_on_walk_input")
 	set_process(true)
 	pass
 
@@ -120,6 +122,8 @@ func _handle_input(delta):
 		if Input.is_action_pressed("Right"):
 			walkVec.x += 5
 			currentAction = "walk"
+		
+		
 	
 	
 	
@@ -134,3 +138,5 @@ func _handle_input(delta):
 		emit_signal("body_walk",newPosVec)
 	
 
+func _on_walk_input(ev):
+	debug._add_line(String(ev.float_x))

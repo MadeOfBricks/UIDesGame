@@ -5,9 +5,7 @@ extends Label
 # var b = "textvar"
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	set_max_lines_visible(10)
 
 func _add_line(string):
 	set_text(get_text() + "\n" + string + "Lines:" + String(get_line_count() - 1))
