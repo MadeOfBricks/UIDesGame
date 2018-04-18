@@ -1,6 +1,11 @@
 extends Node
 
-onready var enemyNumber = 1
+onready var enemyNumber = 0
+onready var pColor = 0
+onready var pScore = 0
+onready var pHealth = 3
+onready var firstLoad = true
+
 var current_scene = null
 
 func _ready():

@@ -20,4 +20,3 @@ func _ready():
 		main.call_deferred("add_child",en)
 		main.call_deferred("_add_enemy",en)
 		print(en.get_name() + " placed")
-	

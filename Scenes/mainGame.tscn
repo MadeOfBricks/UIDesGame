@@ -11,8 +11,8 @@
 [ext_resource path="res://Scripts/Menus/DBText.gd" type="Script" id=9]
 [ext_resource path="res://Fonts/8bitHeader.fnt" type="BitmapFont" id=10]
 [ext_resource path="res://Scripts/spawner.gd" type="Script" id=11]
-[ext_resource path="res://Sprites/pause.png" type="Texture" id=12]
-[ext_resource path="res://Packed/MobileController.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Packed/MobileController.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Sprites/pause.png" type="Texture" id=13]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -160,26 +160,26 @@ max_lines_visible = -1
 
 script/script = ExtResource( 11 )
 
+[node name="MobileController" parent="." instance=ExtResource( 12 )]
+
 [node name="Pause" type="TextureButton" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 814.0
-margin/top = 31.0
-margin/right = 858.0
-margin/bottom = 75.0
+margin/left = 944.0
+margin/top = 24.0
+margin/right = 988.0
+margin/bottom = 68.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 12 )
+textures/normal = ExtResource( 13 )
 params/resize_mode = 0
 params/scale = Vector2( 2, 2 )
 params/stretch_mode = 0
-
-[node name="MobileController" parent="." instance=ExtResource( 13 )]
 
 [connection signal="pressed" from="Pause" to="." method="_on_Pause_pressed"]
 
