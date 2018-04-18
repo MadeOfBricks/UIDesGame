@@ -21,6 +21,7 @@ var pData = {}
 onready var enemies = get_tree().get_nodes_in_group("enemies")
 
 func _ready():
+	player.connect("death", self, "_on_pDeath")
 	if global.firstLoad:
 		print("We did first load")
 		var file = File.new()
@@ -72,3 +73,8 @@ func _remove_enemy(en):
 
 func _add_enemy(en):
 	enemies.append(en)
+
+func _on_pDeath():
+	print("YUP definitely right")
+	var cScene = preload("res://Packed/deathScene.tscn").instance()
+	add_child(cScene)
