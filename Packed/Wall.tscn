@@ -3,17 +3,18 @@
 [ext_resource path="res://Scripts/Wall.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Background/rock.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 24.3417, 53.9712 )
+points = Vector2Array( 3.5, -1, 0, 5, -8, 5, -10, -5, -6, -9, -0.5, -9, 3.5, -4 )
 
 [node name="Wall" type="RigidBody2D"]
 
-transform/pos = Vector2( 615.172, 467.411 )
+transform/pos = Vector2( 621.596, 398.794 )
+transform/scale = Vector2( 0.5, 0.5 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1.41602, -1.41602, 0.595605, 0.595604, 0.0442968, 0.0438963 )
+shapes/0/transform = Matrix32( 9.2708, 0, 0, 8.55052, 28.8849, 17.0931 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -33,9 +34,6 @@ velocity/angular = 0.0
 damp_override/linear = -1.0
 damp_override/angular = -1.0
 script/script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -43,9 +41,8 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( 0.0442968, 0.0438963 )
-transform/rot = 45.0
-transform/scale = Vector2( 2.00256, 0.842312 )
+transform/pos = Vector2( 28.8849, 17.0931 )
+transform/scale = Vector2( 9.2708, 8.55052 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
