@@ -22,7 +22,7 @@ func _on_anim_finish():
 	queue_free()
 
 func _on_body_enter(other):
-	if other.get_name() != "PlayerBody":
+	if other.get_name() != "PlayerBody" && other.is_in_group("enemies"):
 		other.health -= 1
 		if other.health <= 0:
 			other._die()
