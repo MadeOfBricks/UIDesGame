@@ -10,6 +10,8 @@ var HealthCo = [[1,0,0],[1,1,0],[0,1,0]]
 
 var pData = {}
 
+signal player_death
+
 #Brain will tell us when to walk
 func _ready():
 	get_node("../HealthBar").set_frame_color(Color(HealthCo[global.pHealth-1][0], HealthCo[global.pHealth-1][1], HealthCo[global.pHealth-1 - 1][2]))
@@ -42,6 +44,7 @@ func _on_HitDetector_area_enter( area ):
 
 
 func _die():
+	emit_signal("player_death")
 	var file = File.new()	
 	var dir = Directory.new()
 	dir.remove("user://savegame.bin")

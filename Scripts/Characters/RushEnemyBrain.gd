@@ -51,7 +51,7 @@ func _process(delta):
 			var dirVec = target.get_pos() - body.get_pos()
 			var storm = preload("res://Packed/Storm.tscn")
 			var inst = storm.instance()
-			inst.velocity = dirVec.normalized() * stormSpeed * delta
+			inst.velocity = dirVec.normalized() * stormSpeed
 			inst.set_pos(body.get_pos())
 			main.add_child(inst)
 			samplePlayer.play_sound_once("PokeyThrow")

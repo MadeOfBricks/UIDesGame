@@ -31,6 +31,7 @@ var walkVec = Vector2(0,0)
 var walkSpeed = 200
 var dashSpeed = 800
 var dashRange = 100
+var framesSpentDashing = 0
 var currentAction = ""
 
 #Signals for sprite
@@ -75,9 +76,10 @@ func _handle_input(delta):
 				currentAction = "stand"
 			else:
 				samplePlayer.play_sound("DashIn")
-		
+	
 	elif currentAction != "dashTowards" && currentAction != "meleeAttack" && currentAction != "meleeCoolDown":
 		currentAction = "stand"
+		framesSpentDashing = 0
 	
 	if currentAction == "dashTowards":
 		if dashTar != null:
@@ -86,6 +88,7 @@ func _handle_input(delta):
 			var adjustX = dashTar.get_pos().x - approachSide * 60
 			var adjustVec = Vector2(adjustX,dashTar.get_pos().y)
 			var dirVec = adjustVec - body.get_pos()
+			framesSpentDashing += 60 * delta
 			dirVec = dirVec.normalized() * dashSpeed * delta
 			emit_signal("body_dash",dirVec)
 			if body.get_pos().distance_squared_to(adjustVec) < dashSpeed + 50:
@@ -95,6 +98,8 @@ func _handle_input(delta):
 					mySprite.scale(Vector2(-1,1))
 				mySprite.set_animation("Cut1")
 				mySprite.set_frame(0)
+			if framesSpentDashing >= 30 :
+				currentAction = "stand"
 	#Attack Running
 	elif currentAction == "meleeAttack":
 			var cut = attacks[0].instance()

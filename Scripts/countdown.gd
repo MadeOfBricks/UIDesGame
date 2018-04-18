@@ -14,13 +14,11 @@ func _process(delta):
 		if !is_voice_active(sound):
 			var index = playingIndeces.find(sound)
 			playingIndeces.remove(index)
-			print("removing " + playing[index])
 			playing.remove(index)
 			
 		
 
 func play_sound(sound):
-	print(sound + " started")
 	playingIndeces.append(play(sound))
 	playing.append(sound)
 	

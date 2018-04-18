@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Scripts/Storm.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/RusherShot/RusherShot1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/RusherShot/RusherShot2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/RusherShot/PokeyShot1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/RusherShot/PokeyShot2.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 9.32732
+radius = 4.47063
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -15,7 +15,7 @@ animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "spin",
-"speed": 5.0
+"speed": 15.0
 } ]
 
 [node name="Storm" type="Area2D" groups=[
