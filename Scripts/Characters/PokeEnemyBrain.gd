@@ -49,9 +49,9 @@ func _process(delta):
 			#SamplePlayer.play_sound(
 			currentAction = "attack"
 			var dirVec = target.get_pos() - body.get_pos()
-			var spike = preload("res://Packed/Spike.tscn")
+			var spike = preload("res://Packed/MiniStorm.tscn")
 			var inst = spike.instance()
-			inst.velocity = dirVec.normalized() * spikeSpeed * delta
+			inst.velocity = dirVec.normalized() * spikeSpeed
 			inst.set_pos(body.get_pos())
 			inst.set_rot(rad2deg(inst.velocity.angle()))
 			main.add_child(inst)

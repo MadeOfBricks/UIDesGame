@@ -13,4 +13,7 @@ func _ready():
 	pass
 
 func _process(delta):
-	set_pos(get_pos() + (velocity))
+	set_pos(get_pos() + (velocity * delta))
+	
+func _on_body_enter(other):
+	queue_free()

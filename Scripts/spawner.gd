@@ -8,6 +8,8 @@ onready var enemies = [
 	preload("res://Packed/RushEnemy.tscn")
 ]
 
+onready var rock = preload("res://Packed/Wall.tscn")
+
 func _ready():
 	var enInt 
 	if global.enemyNumber == 0:
@@ -20,4 +22,12 @@ func _ready():
 		en.set_pos(Vector2(randX,randY))
 		main.call_deferred("add_child",en)
 		main.call_deferred("_add_enemy",en)
-		print(en.get_name() + " placed")
+	
+	var rockInt = randi() % 3 + 2
+	for i in range(rockInt):
+		var randX = randi() % int(OS.get_window_size().x)
+		var randY = randi() % int(OS.get_window_size().y)
+		var thisRock = rock.instance()
+		thisRock.set_pos(Vector2(randX,randY))
+		main.call_deferred("add_child",thisRock)
+		
