@@ -1,8 +1,6 @@
 extends VBoxContainer
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+onready var global = get_tree().get_root().get_node("/root/global")
 
 func _ready():
 	randomize()
@@ -14,6 +12,7 @@ func _on_Play_released():
 	if not file.file_exists("user://savegame.sav"):
 		get_tree().change_scene("res://Scenes/characterSelect.tscn")
 	else:
+		
 		get_tree().change_scene("res://Scenes/mainGame.tscn")
 
 

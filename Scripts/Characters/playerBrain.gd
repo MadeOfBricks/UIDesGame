@@ -4,6 +4,7 @@ onready var body = get_parent()
 onready var main = body.get_parent()
 onready var debug = main.get_node("DBText")
 onready var controller = main.get_node("MobileController")
+onready var samplePlayer = main.get_node("SamplePlayer")
 
 onready var mySprite = body.get_node("Sprite")
 onready var mySpriteFrames = mySprite.get_sprite_frames()
@@ -47,8 +48,7 @@ func _ready():
 #Set currentAction and handle input for walking
 #Use delta time
 func _process(delta):
-	if lvTimer.count <= -1:
-		_handle_input(delta)
+	_handle_input(delta)
 	
 
 func _handle_input(delta):
@@ -73,6 +73,8 @@ func _handle_input(delta):
 						dashTar = en
 			if dashTar == null:
 				currentAction = "stand"
+			else:
+				samplePlayer.play_sound("DashIn")
 		
 	elif currentAction != "dashTowards" && currentAction != "meleeAttack" && currentAction != "meleeCoolDown":
 		currentAction = "stand"
@@ -101,6 +103,7 @@ func _handle_input(delta):
 			cut.scale(scale)
 			cut.get_node("Sprite").play()
 			get_parent().add_child(cut)
+			samplePlayer.play_sound("Cut1")
 			currentAction = "meleeCoolDown"
 	elif currentAction == "meleeCoolDown":
 		if mySprite.get_animation() =="stand":

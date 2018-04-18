@@ -4,6 +4,7 @@ onready var body = get_parent()
 onready var main = body.get_parent()
 onready var mySprite = body.get_node("Sprite")
 onready var timer = get_node("Timer")
+onready var samplePlayer = main.get_node("SamplePlayer")
 var walkSpeed = 200
 var turnSpeed = 2
 var stormSpeed = 150
@@ -53,6 +54,7 @@ func _process(delta):
 			inst.velocity = dirVec.normalized() * stormSpeed * delta
 			inst.set_pos(body.get_pos())
 			main.add_child(inst)
+			samplePlayer.play_sound_once("PokeyThrow")
 	
 	if target == null:
 		currentAction == "stand"

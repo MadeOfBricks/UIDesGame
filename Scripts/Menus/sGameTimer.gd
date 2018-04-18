@@ -1,24 +1,15 @@
 extends Timer
 var count = 0;
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+
+onready var gameLabel = get_node("../Label")
+
 func isCount():
 	return count
 
 func _ready():
-    connect("timeout",self,"_on_timeout")
+	connect("timeout",self,"_on_timeout")
+	gameLabel.set_text("Go!")
 
 func _on_timeout():
-	if (count == 3):
-		var pSound = get_node("../SamplePlayer")
-		pSound.playSound()
-	if (count >= 1):
-		print(count)
-		get_node("../Label").set_text("%d" % count)
-		count = count-1;
-	elif (count <= 0 and count > -1):
-		get_node("../Label").set_text("Go!")
-		count = count - 1;
-	elif count == -1:
-		get_node("../Label").set_text("")
+	if count == -1:
+		gameLabel.set_text("")

@@ -10,7 +10,6 @@ onready var enemies = [
 
 func _ready():
 	var enInt 
-	global.enemyNumber += 1
 	for i in range(global.enemyNumber):
 		enInt = randi()%2
 		var en = enemies[enInt].instance()

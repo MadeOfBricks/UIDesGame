@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var brain = get_node("Brain")
 onready var global = get_tree().get_root().get_node("/root/global")
+onready var samplePlayer = get_parent().get_node("SamplePlayer")
 
 onready var hitDetector = get_node("HitDetector")
 onready var health = 3
@@ -33,7 +34,7 @@ func _on_HitDetector_area_enter( area ):
 		get_node("../HealthBar").set_frame_color(Color(HealthCo[health-2][0], HealthCo[health-2][1], HealthCo[health - 2][2]))
 		area.queue_free()
 		health -= 1
-		print("ouch")
+		samplePlayer.play_sound("PlayerHurt")
 		if health <= 0:
 			_die()
 			
