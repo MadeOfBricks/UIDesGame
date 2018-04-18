@@ -17,5 +17,6 @@ func _draw():
 
 
 func _on_Right_input_event( ev ):
+	#debug._add
 	if ev.type == InputEvent.MOUSE_BUTTON:
 		emit_signal("attack_input")

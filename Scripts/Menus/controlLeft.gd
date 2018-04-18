@@ -28,7 +28,6 @@ func _draw():
 func _on_Left_input_event( ev ):
 	if ev.type == InputEvent.MOUSE_BUTTON:
 		initialTouch = ev.pos
-		#debug._set_text("PRESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
 	elif (ev.type==InputEvent.MOUSE_MOTION):
 		#debug._set_text(String(ev.pos))
 		var vec = ev.pos - initialTouch

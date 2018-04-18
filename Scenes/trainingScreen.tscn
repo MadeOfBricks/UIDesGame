@@ -51,11 +51,8 @@ margin/right = 850.0
 margin/bottom = 384.0
 custom_fonts/font = ExtResource( 3 )
 text = "Drag on the left side of the screen to walk.
-
 Tap on the right side of the screen to attack.
-
 While moving during your attack, you cannot be hit.
-
 Wipe out each enemy before moving to the next area."
 percent_visible = 1.0
 lines_skipped = 0

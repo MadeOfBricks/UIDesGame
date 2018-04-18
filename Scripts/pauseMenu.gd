@@ -18,16 +18,16 @@ func _on_Continue_released():
 func _on_Quit_released():
 	queue_free()
 	
-	var file = File.new()
-	file.open_encrypted_with_pass("user://savegame.bin", File.READ, OS.get_unique_ID())
-	var text = file.get_as_text()
-	pData.parse_json(text)
-	file.close()
-	
+	var file = File.new()	
 	var dir = Directory.new()
-	dir.remove("user://savegame.sav")
-	pData["pScore"] = 0
-	pData["pHealth"] = 3
+	dir.remove("user://savegame.bin")
+	
+	pData["pScore"] = global.pScore
+	pData["pHealth"] = global.pHealth
+	pData["pColor"] = global.pColor
+	#global.enemyNumber -= 1
+	pData["eNum"] = global.enemyNumber
+	global.firstLoad = true
 	
 	var file = File.new()
 	file.open_encrypted_with_pass("user://savegame.bin", File.WRITE, OS.get_unique_ID())

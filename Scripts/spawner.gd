@@ -10,6 +10,8 @@ onready var enemies = [
 
 func _ready():
 	var enInt 
+	if global.enemyNumber == 0:
+		global.enemyNumber = 1
 	for i in range(global.enemyNumber):
 		enInt = randi()%2
 		var en = enemies[enInt].instance()
@@ -19,4 +21,3 @@ func _ready():
 		main.call_deferred("add_child",en)
 		main.call_deferred("_add_enemy",en)
 		print(en.get_name() + " placed")
-	

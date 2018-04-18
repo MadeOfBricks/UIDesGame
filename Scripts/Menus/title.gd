@@ -6,10 +6,8 @@ func _ready():
 	randomize()
 
 func _on_Play_released():
-	var dir = Directory.new()
-	dir.remove("user://savegame.sav")
 	var file = File.new()
-	if not file.file_exists("user://savegame.sav"):
+	if not file.file_exists("user://savegame.bin"):
 		get_tree().change_scene("res://Scenes/characterSelect.tscn")
 	else:
 		

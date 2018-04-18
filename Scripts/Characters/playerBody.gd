@@ -5,13 +5,14 @@ onready var global = get_tree().get_root().get_node("/root/global")
 onready var samplePlayer = get_parent().get_node("SamplePlayer")
 
 onready var hitDetector = get_node("HitDetector")
-onready var health = 3
 
 var HealthCo = [[1,0,0],[1,1,0],[0,1,0]]
 
+var pData = {}
+
 #Brain will tell us when to walk
 func _ready():
-	get_node("../HealthBar").set_frame_color(Color(HealthCo[health-1][0], HealthCo[health-1][1], HealthCo[health - 1][2]))
+	get_node("../HealthBar").set_frame_color(Color(HealthCo[global.pHealth-1][0], HealthCo[global.pHealth-1][1], HealthCo[global.pHealth-1 - 1][2]))
 	set_layer_mask(1)
 	hitDetector.set_collision_mask(8)
 	set_collision_mask(4)
@@ -31,15 +32,31 @@ func _on_HitDetector_area_enter( area ):
 	if area.is_in_group("enemyProjectiles")&& brain.currentAction != "dashTowards":
 		var vec = Vector2((get_node("../HealthBar").get_size().x - 50), 17)
 		get_node("../HealthBar").set_size(vec)
-		get_node("../HealthBar").set_frame_color(Color(HealthCo[health-2][0], HealthCo[health-2][1], HealthCo[health - 2][2]))
+		get_node("../HealthBar").set_frame_color(Color(HealthCo[global.pHealth-2][0], HealthCo[global.pHealth-2][1], HealthCo[global.pHealth - 2][2]))
 		area.queue_free()
-		health -= 1
+		global.pHealth -= 1
 		samplePlayer.play_sound("PlayerHurt")
-		if health <= 0:
+		if global.pHealth <= 0:
 			_die()
 			
 
 
 func _die():
-	queue_free()
+	var file = File.new()	
+	var dir = Directory.new()
+	dir.remove("user://savegame.bin")
+	pData["pScore"] = 0
+	pData["pHealth"] = 3
+	pData["pColor"] = 0
+	pData["eNum"] = 0
+	global.pScore = 0
+	global.pHealth = 3
+	global.pColor = 0
 	global.enemyNumber = 0
+	global.firstLoad = true
+	var file = File.new()
+	file.open_encrypted_with_pass("user://savegame.bin", File.WRITE, OS.get_unique_ID())
+	file.store_line(pData.to_json())
+	file.close()
+	
+	queue_free()
