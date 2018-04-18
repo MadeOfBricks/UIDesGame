@@ -1,6 +1,6 @@
 extends Node
 
-onready var enemyNumber = 0
+onready var enemyNumber = 1
 onready var pColor = 0
 onready var pScore = 0
 onready var pHealth = 3

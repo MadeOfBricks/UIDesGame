@@ -41,7 +41,7 @@ func _on_ButtonLeft_released():
 
 func _on_Start_released():
 	pData.pColor = count
-	global.enemyNumber = 0
+	global.enemyNumber = pData["eNum"]
 	var file = File.new()
 	file.open_encrypted_with_pass("user://savegame.bin", File.WRITE, OS.get_unique_ID())
 	file.store_line(pData.to_json())

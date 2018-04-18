@@ -25,7 +25,7 @@ func _on_Quit_released():
 	pData["pScore"] = global.pScore
 	pData["pHealth"] = global.pHealth
 	pData["pColor"] = global.pColor
-	global.enemyNumber -= 1
+	#global.enemyNumber -= 1
 	pData["eNum"] = global.enemyNumber
 	global.firstLoad = true
 	

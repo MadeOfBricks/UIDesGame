@@ -48,6 +48,7 @@ func _process(delta):
 	var xOut = player.get_pos().x > OS.get_window_size().x || player.get_pos().x < 0
 	var yOut = player.get_pos().y > OS.get_window_size().y || player.get_pos().y < 0
 	if xOut || yOut:
+		global.enemyNumber += 1
 		get_tree().reload_current_scene()
 
 
