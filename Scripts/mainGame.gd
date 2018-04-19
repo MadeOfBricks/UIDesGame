@@ -86,7 +86,7 @@ func _remove_enemy(en):
 	if enemies.size() == 0:
 		global.enemyNumber += 1
 		label.set_text("Move to next area")
-		global.enemyAttackSpeed +=50
+		global.enemyAttackSpeed += 5
 		global.enemyTurnSpeed += 2
 		set_process(true)
 

@@ -22,7 +22,7 @@ func _die():
 	corpse.set_sprite_frames(mySprite.get_sprite_frames())
 	corpse.set_animation("dead")
 	corpse.set_pos(get_pos())
-	corpse.set_scale(get_scale())
+	corpse.scale(mySprite.get_scale())
 	main.add_child(corpse)
 	queue_free()
 	
