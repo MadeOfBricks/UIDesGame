@@ -50,7 +50,7 @@ extents = Vector2( 10, 9.45877 )
 [node name="PlayerBody" type="KinematicBody2D"]
 
 transform/pos = Vector2( 437.896, 270.957 )
-z/z = -2
+z/z = -1
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 2.00183, 0, 0, 2.19539, 0.0104068, 0.00218441 )

@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var main = get_parent()
 onready var brain = get_node("Brain")
+onready var mySprite = get_node("Sprite")
 onready var health = 1
 
 #Brain will tell us when to walk
@@ -16,10 +17,12 @@ func _on_body_walk(vec):
 	move(vec)
 
 func _die():
-	if false:
-		var meInMain = main.enemies.find(self)
-		main.enemies.remove(meInMain)
-		
+	var corpse = preload("res://Packed/enemyCorpse.tscn").instance()
+	corpse.set_sprite_frames(mySprite.get_sprite_frames())
+	corpse.set_animation("dead")
+	corpse.set_pos(get_pos())
+	corpse.set_scale(get_scale())
+	main.add_child(corpse)
 	main._remove_enemy(self)
 	queue_free()
 

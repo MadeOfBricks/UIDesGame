@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://Scripts/Characters/enemyCorpse.gd" type="Script" id=1]
+
+[node name="Node2D" type="AnimatedSprite"]
+
+transform/scale = Vector2( 2, 2 )
+z/z = -2
+animation = "default"
+playing = true
+script/script = ExtResource( 1 )
+
+

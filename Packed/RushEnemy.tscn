@@ -48,8 +48,8 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
 "loop": false,
-"name": "death",
-"speed": 5.0
+"name": "dead",
+"speed": 15.0
 } ]
 
 [node name="RushEnemy" type="KinematicBody2D" groups=[

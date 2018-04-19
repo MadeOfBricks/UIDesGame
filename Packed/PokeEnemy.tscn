@@ -44,7 +44,7 @@ animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
 "loop": false,
 "name": "dead",
-"speed": 5.0
+"speed": 15.0
 } ]
 
 [node name="PokeEnemy" type="KinematicBody2D" groups=[
