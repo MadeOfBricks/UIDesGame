@@ -5,6 +5,8 @@ onready var pColor = 0
 onready var pScore = 0
 onready var pHealth = 3
 onready var firstLoad = true
+onready var xpos = 750
+onready var ypos = 350
 
 var current_scene = null
 

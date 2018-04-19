@@ -34,14 +34,28 @@ func _ready():
 		global.pHealth = pData["pHealth"]
 		global.pColor = pData["pColor"]
 		global.firstLoad = false
-	var spriteNode = playerSprites[global.pColor].instance()
 	var vec = Vector2((global.pHealth * 50), 17)
 	get_node("HealthBar").set_size(vec)
 	get_node("HealthBar").set_frame_color(Color(HealthCo[global.pHealth - 1][0], HealthCo[global.pHealth - 1][1], HealthCo[global.pHealth - 1][2]))
 	get_node("Score").set_text("Score: %d" % global.pScore)
 	get_node("PlayerBody/Sprite").queue_free()
+	
+	var spriteNode = playerSprites[global.pColor].instance()
 	player.add_child(spriteNode)
 	player.get_node("Brain").mySprite = spriteNode
+	
+	var vec1 = Vector2(global.xpos, global.ypos)
+	print("Pos: (%d, " % global.xpos)
+	print("%d)" % global.ypos)
+	if global.xpos > 1024:
+		vec1 = Vector2(10, global.ypos)
+	elif global.xpos < 1:
+		vec1 = Vector2(1015, global.ypos)
+	elif global.ypos > 599:
+		vec1 = Vector2(global.xpos, 10)
+	elif global.ypos < 1:
+		vec1 = Vector2(global.xpos, 599)
+	player.set_pos(vec1)
 
 
 
@@ -49,6 +63,8 @@ func _ready():
 func _process(delta):
 	var ref = weakref(player)
 	if ref.get_ref():
+		global.xpos = player.get_pos().x
+		global.ypos = player.get_pos().y
 		var xOut = player.get_pos().x > OS.get_window_size().x || player.get_pos().x < 0
 		var yOut = player.get_pos().y > OS.get_window_size().y || player.get_pos().y < 0
 		if xOut || yOut:
