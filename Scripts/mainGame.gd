@@ -66,8 +66,9 @@ func _process(delta):
 	if ref.get_ref():
 		global.xpos = player.get_pos().x
 		global.ypos = player.get_pos().y
-		var xOut = player.get_pos().x > OS.get_window_size().x || player.get_pos().x < 0
-		var yOut = player.get_pos().y > OS.get_window_size().y || player.get_pos().y < 0
+		var screenSize = get_viewport_rect()
+		var xOut = player.get_pos().x > screenSize.end.x || player.get_pos().x < 0
+		var yOut = player.get_pos().y > screenSize.end.y || player.get_pos().y < 0
 		if xOut || yOut:
 			get_tree().reload_current_scene()
 
