@@ -1,8 +1,6 @@
 extends VBoxContainer
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+onready var hSlider = get_parent().get_node("HSlider")
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -15,6 +13,7 @@ func _on_MenuButton_released():
 
 
 func _on_Back_released():
+	#hSlider.get_value()
 	get_tree().change_scene("res://Scenes/titleScreen.tscn")
 
 

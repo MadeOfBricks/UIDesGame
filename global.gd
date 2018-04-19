@@ -9,6 +9,7 @@ onready var pHealth = 3
 onready var firstLoad = true
 onready var xpos = 750
 onready var ypos = 350
+onready var masterVolume = .5
 
 var current_scene = null
 

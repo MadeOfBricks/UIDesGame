@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://Scripts/Menus/OptionsBack.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Background/backButtonUp.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Background/backButtonDn.png" type="Texture" id=3]
-[ext_resource path="res://Fonts/8bitTitle.fnt" type="BitmapFont" id=4]
-[ext_resource path="res://Sprites/Background/resSettUp.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Background/resSettDn.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Background/clrDataUp.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Background/clrDataDn.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/Menus/volSlider.gd" type="Script" id=4]
+[ext_resource path="res://Fonts/8bitTitle.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://Sprites/Background/resSettUp.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Background/resSettDn.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Background/clrDataUp.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Background/clrDataDn.png" type="Texture" id=9]
 
 [node name="Node2D" type="Node2D"]
 
@@ -58,6 +59,7 @@ params/stretch_mode = 0
 
 [node name="HSlider" type="HSlider" parent="."]
 
+rect/scale = Vector2( 2, 2 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -65,7 +67,7 @@ size_flags/vertical = 0
 size_flags/stretch_ratio = 10.0
 margin/left = 164.0
 margin/top = 212.0
-margin/right = 799.0
+margin/right = 525.0
 margin/bottom = 228.0
 range/min = 0.0
 range/max = 100.0
@@ -77,63 +79,7 @@ range/rounded = false
 tick_count = 49
 ticks_on_borders = false
 focus_mode = 2
-
-[node name="SoundVolume" type="Label" parent="HSlider"]
-
-rect/scale = Vector2( 0.4, 0.4 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = -43.0
-margin/right = 584.0
-margin/bottom = 41.0
-custom_fonts/font = ExtResource( 4 )
-text = "Sound Volume"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="ResetSettings" type="TextureButton" parent="HSlider"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 4.0
-margin/top = 48.0
-margin/right = 391.0
-margin/bottom = 178.0
-toggle_mode = false
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
-textures/normal = ExtResource( 5 )
-textures/pressed = ExtResource( 6 )
-params/resize_mode = 0
-params/scale = Vector2( 0.5, 0.5 )
-params/stretch_mode = 0
-
-[node name="clearData" type="TextureButton" parent="HSlider"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 3.0
-margin/top = 97.0
-margin/right = 390.0
-margin/bottom = 227.0
-toggle_mode = false
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
-textures/normal = ExtResource( 7 )
-textures/pressed = ExtResource( 8 )
-params/resize_mode = 0
-params/scale = Vector2( 0.5, 0.5 )
-params/stretch_mode = 0
+script/script = ExtResource( 4 )
 
 [node name="OptionsTitle" type="Label" parent="."]
 
@@ -145,7 +91,7 @@ margin/left = 348.0
 margin/top = 43.0
 margin/right = 674.0
 margin/bottom = 127.0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 text = "Options"
 percent_visible = 1.0
 lines_skipped = 0
@@ -166,10 +112,67 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="SoundVolume" type="Label" parent="."]
+
+rect/scale = Vector2( 0.4, 0.4 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 164.0
+margin/top = 169.0
+margin/right = 748.0
+margin/bottom = 253.0
+custom_fonts/font = ExtResource( 5 )
+text = "Sound Volume"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ResetSettings" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 168.0
+margin/top = 260.0
+margin/right = 555.0
+margin/bottom = 390.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 6 )
+textures/pressed = ExtResource( 7 )
+params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.5 )
+params/stretch_mode = 0
+
+[node name="clearData" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 167.0
+margin/top = 309.0
+margin/right = 554.0
+margin/bottom = 439.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 8 )
+textures/pressed = ExtResource( 9 )
+params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.5 )
+params/stretch_mode = 0
+
 [connection signal="released" from="VBoxContainer/Back" to="VBoxContainer" method="_on_Back_released"]
 
-[connection signal="released" from="HSlider/ResetSettings" to="VBoxContainer" method="_on_ResetSettings_released"]
+[connection signal="released" from="ResetSettings" to="VBoxContainer" method="_on_ResetSettings_released"]
 
-[connection signal="released" from="HSlider/clearData" to="VBoxContainer" method="_on_clearData_released"]
+[connection signal="released" from="clearData" to="VBoxContainer" method="_on_clearData_released"]
 
 

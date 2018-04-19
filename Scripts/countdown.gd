@@ -1,10 +1,13 @@
 extends SamplePlayer
 onready var nCount = get_node("../Timer")
+onready var global = get_tree().get_root().get_node("/root/global")
 
 onready var playing =[]
 onready var playingIndeces = []
 
 func _ready():
+	#print(global.masterVolume)
+	set_default_volume(global.masterVolume)
 	set_process(true)
 	pass
 
