@@ -15,6 +15,7 @@ func _on_Play_released():
 
 
 func _on_Training_released():
+	print("um")
 	get_tree().change_scene("res://Scenes/trainingScreen.tscn")
 
 
