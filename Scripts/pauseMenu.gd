@@ -22,6 +22,8 @@ func _on_Quit_released():
 	pData["pScore"] = global.pScore
 	pData["pHealth"] = global.pHealth
 	pData["pColor"] = global.pColor
+	pData["eAtkSpd"] = global.enemyAttackSpeed
+	pData["eTurnSpd"] = global.enemyTurnSpeed
 	#global.enemyNumber -= 1
 	pData["eNum"] = global.enemyNumber
 	global.firstLoad = true

@@ -37,6 +37,8 @@ func _ready():
 	global.pColor      = 0
 	global.pHealth     = 3
 	global.enemyNumber = 1
+	global.enemyAttackSpeed = 150
+	global.enemyTurnSpeed = 2
 	var dir = Directory.new()
 	dir.remove("user://savegame.bin")
 

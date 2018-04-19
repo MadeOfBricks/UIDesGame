@@ -91,6 +91,8 @@ func _process(delta):
 	
 	lastFrame = mySprite.get_frame()
 
+
+
 func _on_timeout():
 	currentAction = "attackBegin"
 	mySprite.set_animation("attack")

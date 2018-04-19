@@ -1,6 +1,8 @@
 extends Node
 
 onready var enemyNumber = 1
+onready var enemyAttackSpeed = 150
+onready var enemyTurnSpeed = 2
 onready var pColor = 0
 onready var pScore = 0
 onready var pHealth = 3
