@@ -15,12 +15,10 @@ func _on_Play_released():
 
 
 func _on_Training_released():
-	print("Training Button Pressed...")
 	get_tree().change_scene("res://Scenes/trainingScreen.tscn")
 
 
 func _on_Options_released():
-	print("Options Button Pressed")
 	get_tree().change_scene("res://Scenes/optionsScreen.tscn")
 
 

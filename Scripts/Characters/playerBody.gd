@@ -10,7 +10,8 @@ var HealthCo = [[1,0,0],[1,1,0],[0,1,0]]
 
 var pData = {}
 
-signal player_death
+
+signal death
 
 #Brain will tell us when to walk
 func _ready():
@@ -44,22 +45,5 @@ func _on_HitDetector_area_enter( area ):
 
 
 func _die():
-	emit_signal("player_death")
-	var file = File.new()	
-	var dir = Directory.new()
-	dir.remove("user://savegame.bin")
-	pData["pScore"] = 0
-	pData["pHealth"] = 3
-	pData["pColor"] = 0
-	pData["eNum"] = 0
-	global.pScore = 0
-	global.pHealth = 3
-	global.pColor = 0
-	global.enemyNumber = 0
-	global.firstLoad = true
-	var file = File.new()
-	file.open_encrypted_with_pass("user://savegame.bin", File.WRITE, OS.get_unique_ID())
-	file.store_line(pData.to_json())
-	file.close()
-	
+	emit_signal("death")
 	queue_free()
