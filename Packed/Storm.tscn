@@ -23,6 +23,7 @@ animations = [ {
 ]]
 
 transform/scale = Vector2( 2, 2 )
+z/z = -2
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -37,6 +38,7 @@ script/script = ExtResource( 1 )
 
 frames = SubResource( 2 )
 animation = "spin"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

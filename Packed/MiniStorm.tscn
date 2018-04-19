@@ -23,6 +23,7 @@ animations = [ {
 ]]
 
 transform/scale = Vector2( 2, 2 )
+z/z = -2
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )

@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://Scripts/Characters/playerBody.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Player/ClawCut1/Cut1SizedUp1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Reapy_0.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Reapy_1.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Reapy_2.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/ClawCut1/Cut1SizedUp2.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Player/ClawCut1/Cut1SizedUp3.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Player/ClawCut1/Cut1SizedUp4.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Player/ClawCut1/Cut1SizedUp5.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Reapy_1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Reapy_2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/ClawCut1/Cut1SizedUp1.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/ClawCut1/Cut1SizedUp2.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Player/ClawCut1/Cut1SizedUp3.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Player/ClawCut1/Cut1SizedUp4.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Player/ClawCut1/Cut1SizedUp5.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Reapy_0.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/Characters/playerSprite_V2.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/Characters/playerBrain.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/Characters/playerHitDetector.gd" type="Script" id=12]
@@ -21,25 +21,25 @@ extents = Vector2( 10, 10 )
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "DashIn",
-"speed": 30.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": false,
-"name": "stand",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "DashIn",
+"speed": 30.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": false,
 "name": "Cut1",
 "speed": 30.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "stand",
+"speed": 0.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -50,6 +50,7 @@ extents = Vector2( 10, 9.45877 )
 [node name="PlayerBody" type="KinematicBody2D"]
 
 transform/pos = Vector2( 437.896, 270.957 )
+z/z = -2
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 2.00183, 0, 0, 2.19539, 0.0104068, 0.00218441 )
