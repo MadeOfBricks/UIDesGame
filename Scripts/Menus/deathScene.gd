@@ -36,6 +36,7 @@ func _ready():
 	global.pScore      = 0
 	global.pColor      = 0
 	global.pHealth     = 3
+	global.firstLoad   = true
 	global.enemyNumber = 1
 	global.enemyAttackSpeed = 150
 	global.enemyTurnSpeed = 2
