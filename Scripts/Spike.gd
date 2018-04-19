@@ -10,7 +10,6 @@ func _ready():
 	
 	connect("body_enter",self,"_on_body_enter")
 	
-	pass
 
 func _process(delta):
 	set_pos(get_pos() + (velocity))

@@ -1,10 +1,10 @@
-[gd_scene load_steps=19 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://Scripts/mainGame.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Background/btileset.res" type="TileSet" id=2]
 [ext_resource path="res://Scripts/rbacktiling.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Menus/sGameTimer.gd" type="Script" id=4]
-[ext_resource path="res://Fonts/titleFont.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://Fonts/8bitHeader.fnt" type="BitmapFont" id=5]
 [ext_resource path="res://Packed/Sar_Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Sound/Cut1.wav" type="Sample" id=7]
 [ext_resource path="res://Sound/DashIn.wav" type="Sample" id=8]
@@ -13,10 +13,9 @@
 [ext_resource path="res://Sound/countdown.wav" type="Sample" id=11]
 [ext_resource path="res://Scripts/countdown.gd" type="Script" id=12]
 [ext_resource path="res://Scripts/Menus/DBText.gd" type="Script" id=13]
-[ext_resource path="res://Fonts/8bitHeader.fnt" type="BitmapFont" id=14]
-[ext_resource path="res://Scripts/spawner.gd" type="Script" id=15]
-[ext_resource path="res://Packed/MobileController.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Sprites/pause.png" type="Texture" id=17]
+[ext_resource path="res://Scripts/spawner.gd" type="Script" id=14]
+[ext_resource path="res://Packed/MobileController.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Sprites/pause.png" type="Texture" id=16]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -150,7 +149,7 @@ margin/left = 107.0
 margin/top = 25.0
 margin/right = 153.0
 margin/bottom = 52.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.0628662, 0.804688, 0, 1 )
 text = "HP:"
 percent_visible = 1.0
@@ -179,7 +178,7 @@ margin/left = 62.0
 margin/top = 64.0
 margin/right = 160.0
 margin/bottom = 91.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 5 )
 text = "Score: 0"
 percent_visible = 1.0
 lines_skipped = 0
@@ -187,9 +186,9 @@ max_lines_visible = -1
 
 [node name="Spawner" type="Node" parent="."]
 
-script/script = ExtResource( 15 )
+script/script = ExtResource( 14 )
 
-[node name="MobileController" parent="." instance=ExtResource( 16 )]
+[node name="MobileController" parent="." instance=ExtResource( 15 )]
 
 [node name="Pause" type="TextureButton" parent="."]
 
@@ -205,7 +204,7 @@ toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 17 )
+textures/normal = ExtResource( 16 )
 params/resize_mode = 0
 params/scale = Vector2( 2, 2 )
 params/stretch_mode = 0
