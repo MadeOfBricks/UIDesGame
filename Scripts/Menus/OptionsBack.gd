@@ -3,9 +3,7 @@ extends VBoxContainer
 onready var hSlider = get_parent().get_node("HSlider")
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	hSlider.set_value(global.masterVolume * 100)
 
 
 func _on_MenuButton_released():
