@@ -1,16 +1,18 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://Scripts/characterSelect.gd" type="Script" id=1]
 [ext_resource path="res://Packed/ColorFrame.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Fonts/8bitHeader.fnt" type="BitmapFont" id=3]
 [ext_resource path="res://Sprites/Reapy_0.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/goldArrow.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/goldArrowDown.png" type="Texture" id=6]
-[ext_resource path="res://Fonts/titleFont.fnt" type="BitmapFont" id=7]
-[ext_resource path="res://Sprites/Background/Buttonup.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Background/Buttondown.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Background/backButtonUp.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Background/backButtonDn.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Background/SelectButtonup.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Background/SelectButtondown.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Background/SelectButtonupL.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Background/SelectButtondownL.png" type="Texture" id=8]
+[ext_resource path="res://Fonts/titleFont.fnt" type="BitmapFont" id=9]
+[ext_resource path="res://Sprites/Background/Buttonup.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Background/Buttondown.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Background/backButtonUp.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Background/backButtonDn.png" type="Texture" id=13]
 
 [node name="Character Select" type="Node2D"]
 
@@ -50,8 +52,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 627.0
 margin/top = 148.0
-margin/right = 687.0
-margin/bottom = 208.0
+margin/right = 676.0
+margin/bottom = 213.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
@@ -59,26 +61,27 @@ shortcut = null
 textures/normal = ExtResource( 5 )
 textures/pressed = ExtResource( 6 )
 params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.5 )
 params/stretch_mode = 0
 
 [node name="ButtonLeft" type="TextureButton" parent="."]
 
-rect/rotation = 180.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 395.0
-margin/top = 209.0
-margin/right = 455.0
-margin/bottom = 269.0
+margin/left = 345.0
+margin/top = 148.0
+margin/right = 396.0
+margin/bottom = 213.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 5 )
-textures/pressed = ExtResource( 6 )
+textures/normal = ExtResource( 7 )
+textures/pressed = ExtResource( 8 )
 params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.5 )
 params/stretch_mode = 0
 
 [node name="Loading" type="Label" parent="."]
@@ -91,7 +94,7 @@ margin/left = 362.0
 margin/top = 392.0
 margin/right = 662.0
 margin/bottom = 467.0
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 align = 1
 percent_visible = 1.0
@@ -112,8 +115,8 @@ toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 8 )
-textures/pressed = ExtResource( 9 )
+textures/normal = ExtResource( 10 )
+textures/pressed = ExtResource( 11 )
 params/resize_mode = 0
 params/scale = Vector2( 0.35, 0.35 )
 params/stretch_mode = 0
@@ -132,8 +135,8 @@ toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 10 )
-textures/pressed = ExtResource( 11 )
+textures/normal = ExtResource( 12 )
+textures/pressed = ExtResource( 13 )
 params/resize_mode = 0
 params/scale = Vector2( 0.5, 0.5 )
 params/stretch_mode = 0

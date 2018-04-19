@@ -87,6 +87,10 @@ func _remove_enemy(en):
 	if enemies.size() == 0:
 		global.enemyNumber += 1
 		label.set_text("Move to next area")
+		get_node("Right").set_text("->")
+		get_node("Left").set_text("<-")
+		get_node("Bottom").set_text("<-")
+		get_node("Up").set_text("->")
 		global.enemyAttackSpeed += 5
 		global.enemyTurnSpeed += 2
 		set_process(true)
