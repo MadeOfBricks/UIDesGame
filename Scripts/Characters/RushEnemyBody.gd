@@ -9,15 +9,20 @@ func _ready():
 	set_layer_mask(2)
 	set_collision_mask(4)
 	brain.connect("body_walk",self,"_on_body_walk")
+	brain.connect("body_attack", self, "_on_body_attack")
 	
 #When we need to walk, set pos to new vector provided by brain
 func _on_body_walk(vec):
 	move(vec)
 
 func _die():
-	#var meInMain = main.enemies.find(self)
-	#main.enemies.remove(meInMain)
-	
+	if false:
+		var meInMain = main.enemies.find(self)
+		main.enemies.remove(meInMain)
+		
 	main._remove_enemy(self)
-	
 	queue_free()
+
+func _on_body_attack(vec,count):
+	print("now we attack")
+	

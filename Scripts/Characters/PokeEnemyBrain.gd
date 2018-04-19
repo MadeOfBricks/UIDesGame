@@ -4,13 +4,15 @@ onready var body = get_parent()
 onready var main = body.get_parent()
 onready var mySprite = body.get_node("Sprite")
 onready var timer = get_node("Timer")
+onready var samplePlayer = main.get_node("SamplePlayer")
 var walkSpeed = 200
 var turnSpeed = 2
-var spikeSpeed = 50
+var spikeSpeed = 150
 var followDist = 150
 var lastFrame = 0
 var currentAction = ""
 var walkVec = Vector2(1,0)
+var walkDev = (randi() % 3) / 2
 
 onready var lastPivot = body.get_pos()
 onready var target = null
@@ -25,6 +27,9 @@ signal body_attack
 
 #Set process
 func _ready():
+	var neg = randi()%1
+	if neg:
+		walkDev *= -1
 	currentAction = "stand"
 	timer.connect("timeout",self,"_on_timeout")
 	set_process(true)
@@ -41,13 +46,16 @@ func _process(delta):
 	
 	if currentAction == "attackBegin" && target != null:
 		if lastFrame != mySprite.get_frame() && mySprite.get_frame() == 2:
+			#SamplePlayer.play_sound(
 			currentAction = "attack"
 			var dirVec = target.get_pos() - body.get_pos()
-			var spike = preload("res://Packed/Spike.tscn")
+			var spike = preload("res://Packed/MiniStorm.tscn")
 			var inst = spike.instance()
-			inst.velocity = dirVec.normalized() * spikeSpeed * delta
+			inst.velocity = dirVec.normalized() * spikeSpeed
 			inst.set_pos(body.get_pos())
+			inst.set_rot(rad2deg(inst.velocity.angle()))
 			main.add_child(inst)
+			samplePlayer.play_sound_once("PokeyThrow")
 	
 	if target == null:
 		currentAction == "stand"
@@ -68,7 +76,7 @@ func _process(delta):
 	
 	if currentAction == "walk":
 		var dirVec = target.get_pos() - body.get_pos()
-		
+		dirVec = dirVec.rotated(walkDev)
 		
 		walkVec = dirVec
 		
@@ -85,5 +93,4 @@ func _process(delta):
 
 func _on_timeout():
 	currentAction = "attackBegin"
-	print("poke")
 	mySprite.set_animation("attack")

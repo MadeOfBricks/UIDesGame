@@ -1,10 +1,14 @@
 extends TileMap
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+onready var main = get_parent()
+onready var debug = main.get_node("DBText")
 
 func _ready():
-	for i in range(1024):
-		for j in range(600):
+	var maxX = 0
+	var maxY = 0
+	debug.set_text(String(OS.get_screen_size()))
+	for i in range(OS.get_screen_size().x/32 + 10):
+		for j in range(OS.get_screen_size().y/32 + 10):
 			set_cell(i,j,rand_range(0,12),rand_range(0,1),rand_range(0,1),rand_range(0,1))
+			
+	

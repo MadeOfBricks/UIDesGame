@@ -1,24 +1,27 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
-[ext_resource path="res://Scripts/Menus/TrainQuit.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/titleFont.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://Scripts/Menus/trainingScreen.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Background/backButtonUp.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Background/backButtonDn.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/8bitHeader.fnt" type="BitmapFont" id=4]
 
 [node name="Training" type="Node2D"]
 
-[node name="TrainQuit" type="VBoxContainer" parent="."]
+script/script = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 43.0
-margin/top = 507.0
-margin/right = 167.0
-margin/bottom = 560.0
+margin/left = 20.0
+margin/top = 460.0
+margin/right = 407.0
+margin/bottom = 590.0
 alignment = 0
-script/script = ExtResource( 1 )
 
-[node name="Quit" type="MenuButton" parent="TrainQuit"]
+[node name="MenuButton" type="TextureButton" parent="VBoxContainer"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -26,17 +29,53 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 124.0
-margin/bottom = 45.0
-custom_fonts/font = ExtResource( 2 )
+margin/right = 387.0
+margin/bottom = 130.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
 shortcut = null
-text = "Quit"
-flat = true
-items = [  ]
+textures/normal = ExtResource( 2 )
+textures/pressed = ExtResource( 3 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
-[connection signal="released" from="TrainQuit/Quit" to="TrainQuit" method="_on_Quit_released"]
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 120.0
+margin/top = 120.0
+margin/right = 883.0
+margin/bottom = 381.0
+custom_fonts/font = ExtResource( 4 )
+text = "Drag on the left side of the screen to walk.
+
+Tap on the right side of the screen to attack.
+
+While moving during your attack, you cannot be hit.
+
+Wipe out each enemy before moving to the next area."
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ColorFrame" type="ColorFrame" parent="."]
+
+visibility/behind_parent = true
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 6.0
+margin/top = 0.0
+margin/right = 1022.0
+margin/bottom = 598.0
+color = Color( 0.796078, 0.521569, 0, 1 )
+
+[connection signal="released" from="VBoxContainer/MenuButton" to="." method="_on_MenuButton_released"]
 
 

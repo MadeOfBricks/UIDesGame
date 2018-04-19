@@ -7,8 +7,10 @@ var spawn_items = [
 ]
 
 var pData = {
-    "pColor" : 0,
-    "pScore" : 0
+    "pColor"  : 0,
+    "pScore"  : 0,
+    "pHealth" : 3,
+    "eNum"    : 1
 }
 
 
@@ -39,8 +41,9 @@ func _on_ButtonLeft_released():
 
 func _on_Start_released():
 	pData.pColor = count
+	global.enemyNumber = 0
 	var file = File.new()
-	file.open("res://Packed/saveFile.sav", File.WRITE) 
+	file.open_encrypted_with_pass("user://savegame.bin", File.WRITE, OS.get_unique_ID())
 	file.store_line(pData.to_json())
 	file.close()
 	get_tree().change_scene("res://Scenes/mainGame.tscn")

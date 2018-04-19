@@ -20,8 +20,14 @@ func _on_Back_released():
 
 func _on_clearData_released():
 	var dir = Directory.new()
-	dir.remove("res://Packed/saveFile.sav")
-
+	dir.remove("user://savegame.bin")
+	
+	global.enemyNumber = 0
+	global.pColor = 0
+	global.pScore = 0
+	global.pHealth = 3
+	global.firstLoad = true
+	
 	add_color_override("font_color", Color(207,0,0))
 	set("custom_colors/font_color", Color(207,0,0))
 	

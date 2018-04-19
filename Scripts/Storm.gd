@@ -10,6 +10,10 @@ func _ready():
 	
 	connect("body_enter",self,"_on_body_enter")
 	
+	pass
 
 func _process(delta):
-	set_pos(get_pos() + (velocity))
+	set_pos(get_pos() + (velocity * delta))
+	
+func _on_body_enter(other):
+	queue_free()

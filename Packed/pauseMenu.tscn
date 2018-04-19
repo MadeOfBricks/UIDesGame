@@ -7,7 +7,7 @@
 [ext_resource path="res://Sprites/Background/saveQuitUp.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Background/saveQuitDn.png" type="Texture" id=6]
 
-[node name="pauseMenu" type="Node"]
+[node name="pauseMenu" type="Node2D"]
 
 process/pause_mode = 2
 script/script = ExtResource( 1 )
