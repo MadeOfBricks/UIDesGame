@@ -33,6 +33,7 @@ func _ready():
 		global.pScore = pData["pScore"]
 		global.pHealth = pData["pHealth"]
 		global.pColor = pData["pColor"]
+		
 		global.firstLoad = false
 	var spriteNode = playerSprites[global.pColor].instance()
 	var vec = Vector2((global.pHealth * 50), 17)
@@ -69,6 +70,8 @@ func _remove_enemy(en):
 	if enemies.size() == 0:
 		global.enemyNumber += 1
 		label.set_text("Move to next area")
+		global.enemyAttackSpeed +=50
+		global.enemyTurnSpeed += 2
 		set_process(true)
 
 func _add_enemy(en):

@@ -56,6 +56,8 @@ func _process(delta):
 			inst.set_rot(rad2deg(inst.velocity.angle()))
 			main.add_child(inst)
 			samplePlayer.play_sound_once("PokeyThrow")
+			print(spikeSpeed)
+			print(turnSpeed)
 	
 	if target == null:
 		currentAction == "stand"
@@ -90,6 +92,8 @@ func _process(delta):
 		emit_signal("body_walk",newPosVec)
 	
 	lastFrame = mySprite.get_frame()
+	
+
 
 func _on_timeout():
 	currentAction = "attackBegin"

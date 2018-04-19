@@ -14,15 +14,18 @@ func _ready():
 	var enInt 
 	if global.enemyNumber == 0:
 		global.enemyNumber = 1
+		
 	for i in range(global.enemyNumber):
 		enInt = randi()%2
 		var en = enemies[enInt].instance()
 		var randX = randi() % int(OS.get_window_size().x)
 		var randY = randi() % int(OS.get_window_size().y)
-		en.set_pos(Vector2(randX,randY))
+		en.set_pos(Vector2(randX,randY))		
 		main.call_deferred("add_child",en)
 		main.call_deferred("_add_enemy",en)
-	
+		en.call_deferred("_set_Attack_Speed",global.enemyAttackSpeed)
+		en.call_deferred("_set_Turn_Speed",global.enemyTurnSpeed)
+		
 	var rockInt = randi() % 3 + 2
 	for i in range(rockInt):
 		var randX = randi() % int(OS.get_window_size().x)

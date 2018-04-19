@@ -22,3 +22,8 @@ func _die():
 func _on_body_attack(vec,count):
 	print("now we attack")
 
+func _set_Attack_Speed(speed):
+	brain.spikeSpeed =speed
+	
+func _set_Turn_Speed(speed):
+	brain.turnSpeed =speed
