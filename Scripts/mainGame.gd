@@ -89,3 +89,7 @@ func _remove_enemy(en):
 
 func _add_enemy(en):
 	enemies.append(en)
+	
+func _on_player_death():
+	var cScene = load("res://Packed/deathScene.tscn").instance()
+	add_child(cScene)
