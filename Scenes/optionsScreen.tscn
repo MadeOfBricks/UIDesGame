@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://Scripts/Menus/OptionsBack.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Background/backButtonUp.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Background/backButtonDn.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Menus/volSlider.gd" type="Script" id=4]
 [ext_resource path="res://Fonts/8bitTitle.fnt" type="BitmapFont" id=5]
-[ext_resource path="res://Sprites/Background/resSettUp.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Background/resSettDn.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Background/clrDataUp.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Background/clrDataDn.png" type="Texture" id=9]
+[ext_resource path="res://Fonts/8bitHeader.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://Sprites/Background/resSettUp.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Background/resSettDn.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Background/clrDataUp.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Background/clrDataDn.png" type="Texture" id=10]
 
 [node name="Node2D" type="Node2D"]
 
@@ -103,10 +104,11 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 445.0
-margin/top = 339.0
-margin/right = 485.0
-margin/bottom = 353.0
+margin/left = 168.0
+margin/top = 380.0
+margin/right = 208.0
+margin/bottom = 407.0
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.814196, 0, 0, 1 )
 percent_visible = 1.0
 lines_skipped = 0
@@ -143,8 +145,8 @@ toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 6 )
-textures/pressed = ExtResource( 7 )
+textures/normal = ExtResource( 7 )
+textures/pressed = ExtResource( 8 )
 params/resize_mode = 0
 params/scale = Vector2( 0.5, 0.5 )
 params/stretch_mode = 0
@@ -163,8 +165,8 @@ toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 8 )
-textures/pressed = ExtResource( 9 )
+textures/normal = ExtResource( 9 )
+textures/pressed = ExtResource( 10 )
 params/resize_mode = 0
 params/scale = Vector2( 0.5, 0.5 )
 params/stretch_mode = 0

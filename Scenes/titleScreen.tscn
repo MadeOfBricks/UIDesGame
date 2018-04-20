@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://Sprites/Background/tBackground.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Menus/title.gd" type="Script" id=2]
@@ -8,8 +8,7 @@
 [ext_resource path="res://Sprites/Background/tButtondown.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Background/oButtonup.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/Background/oButtondown.png" type="Texture" id=8]
-[ext_resource path="res://Fonts/titleFont.fnt" type="BitmapFont" id=9]
-[ext_resource path="res://Fonts/8bitTitle.fnt" type="BitmapFont" id=10]
+[ext_resource path="res://Fonts/8bitTitle.fnt" type="BitmapFont" id=9]
 
 [node name="titleScreen" type="Node2D"]
 
@@ -88,23 +87,6 @@ textures/pressed = ExtResource( 8 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
-[node name="Loading" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 361.0
-margin/top = 512.0
-margin/right = 635.0
-margin/bottom = 554.0
-custom_fonts/font = ExtResource( 9 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
 [node name="Label" type="Label" parent="."]
 
 rect/scale = Vector2( 1.5, 1.5 )
@@ -116,7 +98,7 @@ margin/left = 70.0
 margin/top = 20.0
 margin/right = 669.0
 margin/bottom = 104.0
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 0.912415, 0.199219, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 8
@@ -125,8 +107,6 @@ text = "Speckled Void"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-
-[connection signal="pressed" from="VBoxContainer1/Play" to="VBoxContainer1" method="_on_Play_pressed"]
 
 [connection signal="released" from="VBoxContainer1/Play" to="VBoxContainer1" method="_on_Play_released"]
 

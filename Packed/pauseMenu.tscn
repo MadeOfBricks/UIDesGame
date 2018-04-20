@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Scripts/pauseMenu.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/bigFont.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://Fonts/8bitTitle.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://Sprites/Background/continueUp.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Background/continueDn.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Background/saveQuitUp.png" type="Texture" id=5]
@@ -33,12 +33,13 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 414.0
-margin/top = 21.0
-margin/right = 611.0
-margin/bottom = 81.0
+margin/left = 369.0
+margin/top = 31.0
+margin/right = 629.0
+margin/bottom = 115.0
 custom_fonts/font = ExtResource( 2 )
-text = "Pause Menu"
+text = "Pause"
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -49,10 +50,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 210.0
-margin/top = 79.0
-margin/right = 597.0
-margin/bottom = 209.0
+margin/left = 208.0
+margin/top = 104.0
+margin/right = 595.0
+margin/bottom = 234.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
@@ -69,10 +70,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 507.0
-margin/top = 79.0
-margin/right = 894.0
-margin/bottom = 209.0
+margin/left = 505.0
+margin/top = 104.0
+margin/right = 892.0
+margin/bottom = 234.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2

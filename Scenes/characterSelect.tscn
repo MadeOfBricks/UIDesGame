@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://Scripts/characterSelect.gd" type="Script" id=1]
 [ext_resource path="res://Packed/ColorFrame.tscn" type="PackedScene" id=2]
@@ -8,11 +8,10 @@
 [ext_resource path="res://Sprites/Background/SelectButtondown.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Background/SelectButtonupL.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/Background/SelectButtondownL.png" type="Texture" id=8]
-[ext_resource path="res://Fonts/titleFont.fnt" type="BitmapFont" id=9]
-[ext_resource path="res://Sprites/Background/Buttonup.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Background/Buttondown.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Background/backButtonUp.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Background/backButtonDn.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Background/Buttonup.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Background/Buttondown.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Background/backButtonUp.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Background/backButtonDn.png" type="Texture" id=12]
 
 [node name="Character Select" type="Node2D"]
 
@@ -94,7 +93,7 @@ margin/left = 362.0
 margin/top = 392.0
 margin/right = 662.0
 margin/bottom = 467.0
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 align = 1
 percent_visible = 1.0
@@ -115,8 +114,8 @@ toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 10 )
-textures/pressed = ExtResource( 11 )
+textures/normal = ExtResource( 9 )
+textures/pressed = ExtResource( 10 )
 params/resize_mode = 0
 params/scale = Vector2( 0.35, 0.35 )
 params/stretch_mode = 0
@@ -135,8 +134,8 @@ toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 12 )
-textures/pressed = ExtResource( 13 )
+textures/normal = ExtResource( 11 )
+textures/pressed = ExtResource( 12 )
 params/resize_mode = 0
 params/scale = Vector2( 0.5, 0.5 )
 params/stretch_mode = 0
