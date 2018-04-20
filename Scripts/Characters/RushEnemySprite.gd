@@ -2,6 +2,7 @@ extends AnimatedSprite
 
 onready var body = get_parent()
 onready var brain = body.get_node("Brain")
+onready var myDelta = 0
 var timeElapsed = 0
 
 func _ready():
@@ -11,13 +12,15 @@ func _ready():
 
 func _on_body_walk(vec):
 	set_animation("rush")
-	if vec.x < 0 && self.get_scale().x != -1:
-		self.scale(Vector2(-1,1))
-	elif vec.x > 0 && self.get_scale().x != 1:
-		self.scale(Vector2(-1,1))
+	if vec.length() >= brain.walkSpeed/2 * myDelta:
+		if vec.x < 0 && self.get_scale().x != -1:
+			self.scale(Vector2(-1,1))
+		elif vec.x > 0 && self.get_scale().x != 1:
+			self.scale(Vector2(-1,1))
 
 
 func _process(delta):
+	myDelta = delta
 	timeElapsed = timeElapsed + delta
 	
 	if brain.currentAction == "stand":
