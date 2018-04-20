@@ -112,6 +112,32 @@ transform/pos = Vector2( 526.554, 213.165 )
 transform/scale = Vector2( 2.54314, 2.28173 )
 texture = ExtResource( 8 )
 
+[node name="Highscore1" type="ColorFrame" parent="."]
+
+visibility/opacity = 0.6
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 26.0
+margin/top = 170.0
+margin/right = 295.0
+margin/bottom = 345.0
+color = Color( 0.294118, 0.294118, 0.294118, 1 )
+
+[node name="Highscore2" type="ColorFrame" parent="."]
+
+visibility/opacity = 0.6
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 730.0
+margin/top = 170.0
+margin/right = 999.0
+margin/bottom = 345.0
+color = Color( 0.294118, 0.294118, 0.294118, 1 )
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 
 focus/ignore_mouse = false
@@ -224,7 +250,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 169.0
+margin/right = 155.0
 margin/bottom = 27.0
 custom_fonts/font = ExtResource( 3 )
 text = "6th ----"
@@ -240,7 +266,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 31.0
-margin/right = 169.0
+margin/right = 155.0
 margin/bottom = 58.0
 custom_fonts/font = ExtResource( 3 )
 text = "7th ----"
@@ -256,7 +282,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 62.0
-margin/right = 169.0
+margin/right = 155.0
 margin/bottom = 89.0
 custom_fonts/font = ExtResource( 3 )
 text = "8th ----"
@@ -272,7 +298,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 93.0
-margin/right = 169.0
+margin/right = 155.0
 margin/bottom = 120.0
 custom_fonts/font = ExtResource( 3 )
 text = "9th ----"
@@ -288,39 +314,13 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 124.0
-margin/right = 169.0
+margin/right = 155.0
 margin/bottom = 151.0
 custom_fonts/font = ExtResource( 3 )
 text = "10th ---"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-
-[node name="Highscore1" type="ColorFrame" parent="."]
-
-visibility/opacity = 0.6
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 26.0
-margin/top = 170.0
-margin/right = 295.0
-margin/bottom = 345.0
-color = Color( 1, 1, 1, 1 )
-
-[node name="Highscore2" type="ColorFrame" parent="."]
-
-visibility/opacity = 0.6
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 730.0
-margin/top = 170.0
-margin/right = 999.0
-margin/bottom = 345.0
-color = Color( 1, 1, 1, 1 )
 
 [node name="High1" type="Label" parent="."]
 
