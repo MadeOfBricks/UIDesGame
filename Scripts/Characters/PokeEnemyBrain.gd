@@ -12,7 +12,7 @@ var followDist = 150
 var lastFrame = 0
 var currentAction = ""
 var walkVec = Vector2(1,0)
-var walkDev = (randi() % 3) / 2
+var walkDev = (randi() % 3) * .5
 
 onready var lastPivot = body.get_pos()
 onready var target = null

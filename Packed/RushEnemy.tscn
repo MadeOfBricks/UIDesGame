@@ -36,11 +36,6 @@ animations = [ {
 "name": "rush",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "attack",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": false,
 "name": "Knockdown",
@@ -50,6 +45,11 @@ animations = [ {
 "loop": false,
 "name": "dead",
 "speed": 15.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
 } ]
 
 [node name="RushEnemy" type="KinematicBody2D" groups=[

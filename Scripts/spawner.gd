@@ -18,8 +18,9 @@ func _ready():
 	for i in range(global.enemyNumber):
 		enInt = randi()%2
 		var en = enemies[enInt].instance()
-		var randX = randi() % int(OS.get_window_size().x)
-		var randY = randi() % int(OS.get_window_size().y)
+		var screenSize = main.get_viewport_rect()
+		var randX = randi() % int(screenSize.end.x - 80) + 40
+		var randY = randi() % int(screenSize.end.y - 80) + 40
 		en.set_pos(Vector2(randX,randY))		
 		main.call_deferred("add_child",en)
 		main.call_deferred("_add_enemy",en)
