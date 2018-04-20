@@ -1,17 +1,44 @@
 extends Node2D
 
+onready var global = get_tree().get_root().get_node("/root/global")
+
 onready var playerSprites = [
 	preload("res://Sprites/Reapy_0.png"),
 	preload("res://Sprites/ReapyR_0.png"),
 	preload("res://Sprites/ReapyG_0.png"),
 	preload("res://Sprites/ReapyB_0.png")
 ]
+onready var labels = [
+    "VBoxContainer 2/Label 1",
+    "VBoxContainer 2/Label 2",
+    "VBoxContainer 2/Label 3",
+    "VBoxContainer 2/Label 4",
+    "VBoxContainer 2/Label 5",
+    "VBoxContainer3/Label 1",
+    "VBoxContainer3/Label 2",
+    "VBoxContainer3/Label 3",
+    "VBoxContainer3/Label 4",
+    "VBoxContainer3/Label 5" 
+]
+onready var labels1 = [
+    "VBoxContainer/Label1",
+    "VBoxContainer/Label2",
+    "VBoxContainer/Label3",
+    "VBoxContainer/Label4",
+    "VBoxContainer/Label5",
+    "VBoxContainer1/Label1",
+    "VBoxContainer1/Label2",
+    "VBoxContainer1/Label3",
+    "VBoxContainer1/Label4",
+    "VBoxContainer1/Label5" 
+]
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-var highScores = { "highScore" : 0 }
+onready var scores = [0,0,0,0,0,0,0,0,0,0]
+var coloor = -1
+
 func _ready():
-	highScores["highScore"] = global.pScore
 	get_node("Score").set_text("You Scored: %d pts" % global.pScore)
 	
 	if global.pScore == 0:
@@ -29,10 +56,56 @@ func _ready():
 	
 	get_node("ghost").set_texture(playerSprites[global.pColor])
 	
+	var i = 0
+	
 	var file = File.new()
-	file.open_encrypted_with_pass("user://highScores.bin", File.WRITE, OS.get_unique_ID())
-	file.store_line(highScores.to_json())
+	file.open_encrypted_with_pass("user://highScores.bin", File.READ, OS.get_unique_ID())
+	while i < 10:
+		scores[i] = file.get_16()
+		i += 1
 	file.close()
+	
+	var dir = Directory.new()
+	dir.remove("user://highScores.bin")
+	
+	i = 0
+	var tmp = 0
+	while i < 10:
+		if global.pScore > scores[i]:
+			if (coloor == -1):
+				coloor = i
+				get_node(labels[i]).set("custom_colors/font_color", Color(1,1,0,1))
+				get_node(labels1[i]).set("custom_colors/font_color", Color(1,1,0,1))
+			tmp = scores[i]
+			scores[i] = global.pScore
+			global.pScore = tmp
+		i += 1
+	
+	file = File.new()
+	file.open_encrypted_with_pass("user://highScores.bin", File.WRITE, OS.get_unique_ID())
+	i = 0
+	while (i < 10):
+		file.store_16(scores[i])
+		i += 1
+	file.close()
+	
+	i = 0
+	while i < 5:
+		print ("Score2: %d" % scores[i])
+		i += 1
+	
+	get_node("VBoxContainer 2/Label 1").set_text("%d pts" % scores[0])
+	get_node("VBoxContainer 2/Label 2").set_text("%d pts" % scores[1])
+	get_node("VBoxContainer 2/Label 3").set_text("%d pts" % scores[2])
+	get_node("VBoxContainer 2/Label 4").set_text("%d pts" % scores[3])
+	get_node("VBoxContainer 2/Label 5").set_text("%d pts" % scores[4])
+	get_node("VBoxContainer3/Label 1").set_text("%d pts" % scores[5])
+	get_node("VBoxContainer3/Label 2").set_text("%d pts" % scores[6])
+	get_node("VBoxContainer3/Label 3").set_text("%d pts" % scores[7])
+	get_node("VBoxContainer3/Label 4").set_text("%d pts" % scores[8])
+	get_node("VBoxContainer3/Label 5").set_text("%d pts" % scores[9])
+	
+	
 	global.pScore      = 0
 	global.pColor      = 0
 	global.pHealth     = 3

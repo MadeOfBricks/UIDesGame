@@ -12,6 +12,7 @@ var pData = {
     "pHealth" : 3,
     "eNum"    : 1
 }
+var highScores = [0,0,0,0,0,0,0,0,0,0]
 
 
 var count = 0
@@ -46,6 +47,14 @@ func _on_Start_released():
 	file.open_encrypted_with_pass("user://savegame.bin", File.WRITE, OS.get_unique_ID())
 	file.store_line(pData.to_json())
 	file.close()
+	
+	var i = 0
+	file = File.new()
+	if not file.file_exists("user://highScores.bin"):
+		file.open_encrypted_with_pass("user://highScores.bin", File.WRITE, OS.get_unique_ID())
+		while (i < 10):
+			file.store_16(highScores[i])
+			i += 1
 	get_tree().change_scene("res://Scenes/mainGame.tscn")
 
 
