@@ -2,19 +2,19 @@
 
 [ext_resource path="res://Scripts/Characters/RushEnemyBody.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/ModRush/Rush1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/ModRush/Rush5.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/ModRush/Rush6.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/ModRush/Rush7.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/ModRush/Rush8.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/ModRush/Rush10.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/ModRush/Rush11.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/ModRush/Rush12.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/ModRush/Rush13.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/ModRush/Rush14.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/ModRush/Rush15.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/ModRush/Rush16.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/ModRush/Rush17.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/ModRush/Rush18.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/ModRush/Rush14.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/ModRush/Rush15.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/ModRush/Rush16.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/ModRush/Rush17.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/ModRush/Rush18.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/ModRush/Rush10.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/ModRush/Rush11.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/ModRush/Rush12.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/ModRush/Rush13.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/ModRush/Rush5.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/ModRush/Rush6.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/ModRush/Rush7.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/ModRush/Rush8.png" type="Texture" id=15]
 [ext_resource path="res://Scripts/Characters/RushEnemySprite.gd" type="Script" id=16]
 [ext_resource path="res://Scripts/Characters/RushEnemyBrain.gd" type="Script" id=17]
 
@@ -31,22 +31,22 @@ animations = [ {
 "name": "stand",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "rush",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
-"loop": false,
-"name": "Knockdown",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": false,
 "name": "dead",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "Knockdown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "rush",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "attack",
 "speed": 5.0
