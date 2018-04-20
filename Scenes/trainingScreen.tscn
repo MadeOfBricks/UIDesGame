@@ -15,10 +15,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 20.0
-margin/top = 460.0
-margin/right = 407.0
-margin/bottom = 590.0
+margin/left = 60.0
+margin/top = 490.0
+margin/right = 447.0
+margin/bottom = 620.0
 alignment = 0
 
 [node name="MenuButton" type="TextureButton" parent="VBoxContainer"]
@@ -30,7 +30,7 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 387.0
-margin/bottom = 130.0
+margin/bottom = 65.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
@@ -38,6 +38,7 @@ shortcut = null
 textures/normal = ExtResource( 2 )
 textures/pressed = ExtResource( 3 )
 params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.5 )
 params/stretch_mode = 0
 
 [node name="Label" type="Label" parent="."]
@@ -47,9 +48,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 120.0
-margin/top = 120.0
+margin/top = 130.0
 margin/right = 883.0
-margin/bottom = 381.0
+margin/bottom = 391.0
 custom_fonts/font = ExtResource( 4 )
 text = "Drag on the left side of the screen to walk.
 
@@ -70,10 +71,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 6.0
-margin/top = 0.0
-margin/right = 1022.0
-margin/bottom = 598.0
+margin/left = -8.0
+margin/top = -5.0
+margin/right = 1034.0
+margin/bottom = 601.0
 color = Color( 0.796078, 0.521569, 0, 1 )
 
 [connection signal="released" from="VBoxContainer/MenuButton" to="." method="_on_MenuButton_released"]
