@@ -36,9 +36,11 @@ func _process(delta):
 	
 	#if brain.currentAction == "walk":
 	#	set_animation("walk")
-	if brain.currentAction == "stand":
-		set_animation("stand")
+	#if brain.currentAction == "stand":
+		#set_animation("stand")
 
 func _on_anim_finished():
 	if get_animation() == "Cut1":
+		set_animation("stand")
+	if get_animation() == "walk":
 		set_animation("stand")

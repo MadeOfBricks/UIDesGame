@@ -7,16 +7,20 @@ signal attack_input
 
 
 func _ready():
+	set_process_input(true)
 	set_pos(Vector2(OS.get_window_size().x/2,50))
-	#debug._set_text(String(get_pos()))
 
 func _draw():
 	set_size(Vector2(OS.get_window_size().x/2,OS.get_window_size().y))
 	var r = Rect2( Vector2(), get_size())
-	
+
+
+func _input(ev):
+	if ev.type == InputEvent.SCREEN_TOUCH:
+		if ev.x > get_pos().x:
+			emit_signal("attack_input")
 
 
 func _on_Right_input_event( ev ):
-	#debug._add
 	if ev.type == InputEvent.MOUSE_BUTTON:
 		emit_signal("attack_input")

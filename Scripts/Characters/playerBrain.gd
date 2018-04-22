@@ -137,8 +137,8 @@ func _handle_input(delta):
 		
 		if controllerWalk:
 			currentAction = "walk"
+			#debug._add_line("Player recieved vec of: " + String(walkVec))
 		
-	controllerWalk = false
 	
 	
 	if currentAction =="walk":
@@ -149,7 +149,10 @@ func _handle_input(delta):
 			newPosVec = n.slide(newPosVec)
 			walkVec = n.slide(walkVec)
 		
+		#debug._add_line("WalkVec changed to " + String(walkVec))
 		emit_signal("body_walk",newPosVec)
+	
+	controllerWalk = false
 	walkVec = Vector2(0,0)
 	
 
@@ -158,5 +161,4 @@ func _on_walk_input(vec):
 	walkVec = vec
 
 func _on_attack_input():
-	debug._set_text("Player received signal")
 	controllerAttack = true
