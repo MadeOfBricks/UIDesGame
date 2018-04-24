@@ -35,7 +35,6 @@ onready var labels1 = [
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-onready var scores = [0,0,0,0,0,0,0,0,0,0]
 var coloor = -1
 
 func _ready():
@@ -58,12 +57,6 @@ func _ready():
 	
 	var i = 0
 	
-	var file = File.new()
-	file.open_encrypted_with_pass("user://highScores.bin", File.READ, OS.get_unique_ID())
-	while i < 10:
-		scores[i] = file.get_16()
-		i += 1
-	file.close()
 	
 	var dir = Directory.new()
 	dir.remove("user://highScores.bin")
@@ -71,39 +64,39 @@ func _ready():
 	i = 0
 	var tmp = 0
 	while i < 10:
-		if global.pScore > scores[i]:
+		if global.pScore > global.scores[i]:
 			if (coloor == -1):
 				coloor = i
 				get_node(labels[i]).set("custom_colors/font_color", Color(1,1,0,1))
 				get_node(labels1[i]).set("custom_colors/font_color", Color(1,1,0,1))
-			tmp = scores[i]
-			scores[i] = global.pScore
+			tmp = global.scores[i]
+			global.scores[i] = global.pScore
 			global.pScore = tmp
 		i += 1
-	
+	var file
 	file = File.new()
 	file.open_encrypted_with_pass("user://highScores.bin", File.WRITE, OS.get_unique_ID())
 	i = 0
 	while (i < 10):
-		file.store_16(scores[i])
+		file.store_16(global.scores[i])
 		i += 1
 	file.close()
 	
 	i = 0
 	while i < 5:
-		print ("Score2: %d" % scores[i])
+		print ("Score2: %d" % global.scores[i])
 		i += 1
 	
-	get_node("VBoxContainer 2/Label 1").set_text("%d pts" % scores[0])
-	get_node("VBoxContainer 2/Label 2").set_text("%d pts" % scores[1])
-	get_node("VBoxContainer 2/Label 3").set_text("%d pts" % scores[2])
-	get_node("VBoxContainer 2/Label 4").set_text("%d pts" % scores[3])
-	get_node("VBoxContainer 2/Label 5").set_text("%d pts" % scores[4])
-	get_node("VBoxContainer3/Label 1").set_text("%d pts" % scores[5])
-	get_node("VBoxContainer3/Label 2").set_text("%d pts" % scores[6])
-	get_node("VBoxContainer3/Label 3").set_text("%d pts" % scores[7])
-	get_node("VBoxContainer3/Label 4").set_text("%d pts" % scores[8])
-	get_node("VBoxContainer3/Label 5").set_text("%d pts" % scores[9])
+	get_node("VBoxContainer 2/Label 1").set_text("%d pts" % global.scores[0])
+	get_node("VBoxContainer 2/Label 2").set_text("%d pts" % global.scores[1])
+	get_node("VBoxContainer 2/Label 3").set_text("%d pts" % global.scores[2])
+	get_node("VBoxContainer 2/Label 4").set_text("%d pts" % global.scores[3])
+	get_node("VBoxContainer 2/Label 5").set_text("%d pts" % global.scores[4])
+	get_node("VBoxContainer3/Label 1").set_text("%d pts" % global.scores[5])
+	get_node("VBoxContainer3/Label 2").set_text("%d pts" % global.scores[6])
+	get_node("VBoxContainer3/Label 3").set_text("%d pts" % global.scores[7])
+	get_node("VBoxContainer3/Label 4").set_text("%d pts" % global.scores[8])
+	get_node("VBoxContainer3/Label 5").set_text("%d pts" % global.scores[9])
 	
 	
 	global.pScore      = 0

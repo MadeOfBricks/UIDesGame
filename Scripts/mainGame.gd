@@ -22,9 +22,9 @@ onready var enemies = get_tree().get_nodes_in_group("enemies")
 
 func _ready():
 	player.connect("death", self, "_on_pDeath")
+	var file = File.new()
 	if global.firstLoad:
 		print("We did first load")
-		var file = File.new()
 		file.open_encrypted_with_pass("user://savegame.bin", File.READ, OS.get_unique_ID())
 		var text = file.get_as_text()
 		pData.parse_json(text)
@@ -57,10 +57,16 @@ func _ready():
 	elif global.ypos < 1:
 		vec1 = Vector2(global.xpos, 599)
 	player.set_pos(vec1)
-
-
-
-
+	
+	var i = 0
+	file = File.new()
+	file.open_encrypted_with_pass("user://highScores.bin", File.READ, OS.get_unique_ID())
+	while i < 10:
+		global.scores[i] = file.get_16()
+		i += 1
+	file.close()
+	
+	
 func _process(delta):
 	var ref = weakref(player)
 	if ref.get_ref():

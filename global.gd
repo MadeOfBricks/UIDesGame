@@ -10,6 +10,7 @@ onready var firstLoad = true
 onready var xpos = 750
 onready var ypos = 350
 onready var masterVolume = .5
+onready var scores = [0,0,0,0,0,0,0,0,0,0]
 
 var current_scene = null
 

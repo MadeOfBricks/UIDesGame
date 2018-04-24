@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://Scripts/pauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/8bitTitle.fnt" type="BitmapFont" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Sprites/Background/continueDn.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Background/saveQuitUp.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Background/saveQuitDn.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/8bitHeader.fnt" type="BitmapFont" id=7]
+[ext_resource path="res://Fonts/8-bit pusab.fnt" type="BitmapFont" id=8]
 
 [node name="pauseMenu" type="Node2D"]
 
@@ -83,6 +85,258 @@ textures/pressed = ExtResource( 6 )
 params/resize_mode = 0
 params/scale = Vector2( 0.75, 0.75 )
 params/stretch_mode = 0
+
+[node name="ColorFrame 2" type="ColorFrame" parent="."]
+
+visibility/opacity = 0.8
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 217.0
+margin/top = 351.0
+margin/right = 482.0
+margin/bottom = 511.0
+color = Color( 0.176471, 0, 0.254902, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 223.0
+margin/top = 355.0
+margin/right = 481.0
+margin/bottom = 506.0
+alignment = 0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 258.0
+margin/bottom = 27.0
+custom_fonts/font = ExtResource( 7 )
+text = "1st ----- %d pts"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label 2" type="Label" parent="VBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 31.0
+margin/right = 258.0
+margin/bottom = 58.0
+custom_fonts/font = ExtResource( 7 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label 3" type="Label" parent="VBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 62.0
+margin/right = 258.0
+margin/bottom = 89.0
+custom_fonts/font = ExtResource( 7 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label 4" type="Label" parent="VBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 93.0
+margin/right = 258.0
+margin/bottom = 120.0
+custom_fonts/font = ExtResource( 7 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label 5" type="Label" parent="VBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 124.0
+margin/right = 258.0
+margin/bottom = 151.0
+custom_fonts/font = ExtResource( 7 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ColorFrame 3" type="ColorFrame" parent="."]
+
+visibility/opacity = 0.8
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 542.0
+margin/top = 351.0
+margin/right = 807.0
+margin/bottom = 511.0
+color = Color( 0.176471, 0, 0.254902, 1 )
+
+[node name="VBoxContainer 2" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 545.0
+margin/top = 355.0
+margin/right = 806.0
+margin/bottom = 506.0
+alignment = 0
+
+[node name="Label" type="Label" parent="VBoxContainer 2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 261.0
+margin/bottom = 27.0
+custom_fonts/font = ExtResource( 7 )
+text = "1st ----- %d pts"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label 2" type="Label" parent="VBoxContainer 2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 31.0
+margin/right = 261.0
+margin/bottom = 58.0
+custom_fonts/font = ExtResource( 7 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label 3" type="Label" parent="VBoxContainer 2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 62.0
+margin/right = 261.0
+margin/bottom = 89.0
+custom_fonts/font = ExtResource( 7 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label 4" type="Label" parent="VBoxContainer 2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 93.0
+margin/right = 261.0
+margin/bottom = 120.0
+custom_fonts/font = ExtResource( 7 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label 5" type="Label" parent="VBoxContainer 2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 124.0
+margin/right = 261.0
+margin/bottom = 151.0
+custom_fonts/font = ExtResource( 7 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label 2" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 243.0
+margin/top = 315.0
+margin/right = 455.0
+margin/bottom = 342.0
+custom_fonts/font = ExtResource( 7 )
+text = "Highscore 1 - 5"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label3" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 557.0
+margin/top = 315.0
+margin/right = 788.0
+margin/bottom = 342.0
+custom_fonts/font = ExtResource( 7 )
+text = "Highscore 6 - 10"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label 3" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 162.0
+margin/top = 214.0
+margin/right = 841.0
+margin/bottom = 283.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 1, 0.984375, 0, 1 )
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="released" from="Continue" to="." method="_on_Continue_released"]
 
