@@ -21,6 +21,7 @@ var pData = {}
 onready var enemies = get_tree().get_nodes_in_group("enemies")
 
 func _ready():
+	global.canAttack = true
 	player.connect("death", self, "_on_pDeath")
 	var file = File.new()
 	if global.firstLoad:

@@ -3,6 +3,7 @@ extends VBoxContainer
 onready var global = get_tree().get_root().get_node("/root/global")
 
 func _ready():
+	global.canAttack = false
 	randomize()
 
 func _on_Play_released():
@@ -16,7 +17,7 @@ func _on_Play_released():
 
 func _on_Training_released():
 	print("um")
-	get_tree().change_scene("res://Scenes/trainingScreen.tscn")
+	get_tree().change_scene("res://Scenes/trainingScreenR.tscn")
 
 
 func _on_Options_released():

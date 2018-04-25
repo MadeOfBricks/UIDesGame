@@ -1,22 +1,20 @@
-[gd_scene load_steps=19 format=1]
+[gd_scene load_steps=17 format=1]
 
-[ext_resource path="res://Scripts/mainGame.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/mainGameR.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Background/btileset.res" type="TileSet" id=2]
 [ext_resource path="res://Scripts/rbacktiling.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/Menus/sGameTimer.gd" type="Script" id=4]
-[ext_resource path="res://Fonts/8bitHeader.fnt" type="BitmapFont" id=5]
-[ext_resource path="res://Fonts/8-bit pusab.fnt" type="BitmapFont" id=6]
-[ext_resource path="res://Packed/Sar_Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Sound/Cut1.wav" type="Sample" id=8]
-[ext_resource path="res://Sound/DashIn.wav" type="Sample" id=9]
-[ext_resource path="res://Sound/PlayerHurt.wav" type="Sample" id=10]
-[ext_resource path="res://Sound/PokeyThrow.wav" type="Sample" id=11]
-[ext_resource path="res://Sound/countdown.wav" type="Sample" id=12]
-[ext_resource path="res://Scripts/countdown.gd" type="Script" id=13]
-[ext_resource path="res://Scripts/Menus/DBText.gd" type="Script" id=14]
-[ext_resource path="res://Scripts/spawner.gd" type="Script" id=15]
-[ext_resource path="res://Packed/MobileController.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Sprites/pause.png" type="Texture" id=17]
+[ext_resource path="res://Packed/Sar_Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Characters/playerBodyR.gd" type="Script" id=5]
+[ext_resource path="res://Sound/Cut1.wav" type="Sample" id=6]
+[ext_resource path="res://Sound/DashIn.wav" type="Sample" id=7]
+[ext_resource path="res://Sound/PlayerHurt.wav" type="Sample" id=8]
+[ext_resource path="res://Sound/PokeyThrow.wav" type="Sample" id=9]
+[ext_resource path="res://Sound/countdown.wav" type="Sample" id=10]
+[ext_resource path="res://Scripts/countdown.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/Menus/DBText.gd" type="Script" id=12]
+[ext_resource path="res://Packed/MobileController.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Sprites/Background/backButtonUp.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Background/backButtonDn.png" type="Texture" id=15]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -24,31 +22,31 @@ samples/Cut1 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 8 )
+"sample": ExtResource( 6 )
 }
 samples/DashIn = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 9 )
+"sample": ExtResource( 7 )
 }
 samples/PlayerHurt = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 10 )
+"sample": ExtResource( 8 )
 }
 samples/PokeyThrow = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 11 )
+"sample": ExtResource( 9 )
 }
 samples/countdown = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 12 )
+"sample": ExtResource( 10 )
 }
 
 [node name="Main" type="Node2D"]
@@ -77,108 +75,10 @@ occluder/light_mask = 1
 tile_data = IntArray(  )
 script/script = ExtResource( 3 )
 
-[node name="Timer" type="Timer" parent="."]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = true
-script/script = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 253.0
-margin/top = 70.0
-margin/right = 771.0
-margin/bottom = 109.0
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color = Color( 0.941176, 0.941176, 0.941176, 1 )
-text = "Ready"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Right" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 960.0
-margin/top = 290.0
-margin/right = 1005.0
-margin/bottom = 378.0
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color = Color( 0.705882, 0, 0.843137, 1 )
-align = 2
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Up" type="Label" parent="."]
-
-rect/rotation = 90.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 468.0
-margin/top = 65.0
-margin/right = 513.0
-margin/bottom = 153.0
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color = Color( 0.705882, 0, 0.843137, 1 )
-align = 2
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Bottom" type="Label" parent="."]
-
-rect/rotation = 90.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 480.0
-margin/top = 580.0
-margin/right = 600.0
-margin/bottom = 644.0
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color = Color( 0.705882, 0, 0.843137, 1 )
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Left" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 20.0
-margin/top = 290.0
-margin/right = 104.0
-margin/bottom = 368.0
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color = Color( 0.705882, 0, 0.843137, 1 )
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="PlayerBody" parent="." instance=ExtResource( 7 )]
+[node name="PlayerBody" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 703.188, 355.368 )
+script/script = ExtResource( 5 )
 
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
@@ -196,7 +96,7 @@ default/filter/gain = 1.0
 default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
-script/script = ExtResource( 13 )
+script/script = ExtResource( 11 )
 
 [node name="DBText" type="Label" parent="."]
 
@@ -212,78 +112,30 @@ text = "Test"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = ExtResource( 14 )
+script/script = ExtResource( 12 )
 
-[node name="Health" type="Label" parent="."]
+[node name="MobileController" parent="." instance=ExtResource( 13 )]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 107.0
-margin/top = 25.0
-margin/right = 153.0
-margin/bottom = 52.0
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color = Color( 0.078125, 1, 0, 1 )
-text = "HP:"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="HealthBar" type="ColorFrame" parent="."]
+[node name="back" type="TextureButton" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 162.0
-margin/top = 29.0
-margin/right = 312.0
-margin/bottom = 46.0
-color = Color( 0.03125, 1, 0, 1 )
-
-[node name="Score" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 62.0
-margin/top = 64.0
-margin/right = 179.0
-margin/bottom = 91.0
-custom_fonts/font = ExtResource( 5 )
-text = "Score: 0"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Spawner" type="Node" parent="."]
-
-script/script = ExtResource( 15 )
-
-[node name="MobileController" parent="." instance=ExtResource( 16 )]
-
-[node name="Pause" type="TextureButton" parent="."]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 944.0
-margin/top = 24.0
-margin/right = 988.0
-margin/bottom = 68.0
+margin/left = 10.0
+margin/top = 525.0
+margin/right = 203.5
+margin/bottom = 590.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 17 )
+textures/normal = ExtResource( 14 )
+textures/pressed = ExtResource( 15 )
 params/resize_mode = 0
-params/scale = Vector2( 2, 2 )
+params/scale = Vector2( 0.5, 0.5 )
 params/stretch_mode = 0
 
-[connection signal="pressed" from="Pause" to="." method="_on_Pause_pressed"]
+[connection signal="released" from="back" to="." method="_on_back_released"]
 
 

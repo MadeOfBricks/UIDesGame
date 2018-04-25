@@ -12,6 +12,8 @@ onready var ypos = 350
 onready var masterVolume = .5
 onready var scores = [0,0,0,0,0,0,0,0,0,0]
 
+onready var canAttack = false
+
 var current_scene = null
 
 func _ready():
