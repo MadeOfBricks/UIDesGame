@@ -35,4 +35,5 @@ func _on_ColorFrame_5_input_event( ev ):
 				get_node("ColorFrame 4").hide()
 				get_node("Label").hide()
 				get_node("Label 4").hide()
+				get_parent().get_node("Label").show()
 				queue_free()

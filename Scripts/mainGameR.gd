@@ -9,6 +9,7 @@ onready var dBText = get_node("DBText")
 onready var playerSprites = preload("res://Packed/PlayerSprites/Player_Sprite_Bk.tscn")
 
 func _ready():
+	get_node("Label").hide()
 	var item = preload("res://Scenes/trainingScreen.tscn").instance()
 	add_child(item)
 	

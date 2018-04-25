@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://Scripts/mainGameR.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Background/btileset.res" type="TileSet" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Packed/MobileController.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Sprites/Background/backButtonUp.png" type="Texture" id=14]
 [ext_resource path="res://Sprites/Background/backButtonDn.png" type="Texture" id=15]
+[ext_resource path="res://Fonts/8bitHeader.fnt" type="BitmapFont" id=16]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -135,6 +136,29 @@ textures/pressed = ExtResource( 15 )
 params/resize_mode = 0
 params/scale = Vector2( 0.5, 0.5 )
 params/stretch_mode = 0
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 155.0
+margin/top = 150.0
+margin/right = 869.0
+margin/bottom = 357.0
+custom_fonts/font = ExtResource( 16 )
+custom_colors/font_color = Color( 0.577637, 0, 0.660156, 1 )
+text = "Drag on the left side of the screen to walk
+
+Tap on the right side of the screen to attack
+
+While moving during your attack, you cannot be hit.
+
+Wipe out each enemy before moving to the next area."
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="released" from="back" to="." method="_on_back_released"]
 
