@@ -23,6 +23,7 @@ animations = [ {
 
 [node name="Cut1" type="Area2D"]
 
+transform/scale = Vector2( 2, 2 )
 z/z = 1
 input/pickable = true
 shapes/0/shape = SubResource( 1 )

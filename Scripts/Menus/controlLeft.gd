@@ -21,7 +21,7 @@ func _ready():
 func _input(ev):
 	if ev.type == InputEvent.SCREEN_DRAG \
 	|| ev.type == InputEvent.SCREEN_TOUCH:
-		if ev.x < viewSize.end.x:
+		if ev.x < viewSize.end.x/2:
 			if ev.type == InputEvent.SCREEN_DRAG:
 				
 				var vec = ev.relative_pos

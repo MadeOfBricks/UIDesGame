@@ -70,7 +70,8 @@ func _handle_input(delta):
 							dashTar = en
 					elif en != null:
 						#print(en.get_name())
-						if body.get_pos().distance_to(en.get_pos()) < 200 :
+						if body.get_pos().distance_to(en.get_pos()) < 200 \
+						&& en.health >= 0:
 							dashTar = en
 				if dashTar == null:
 					currentAction = "stand"
@@ -82,13 +83,16 @@ func _handle_input(delta):
 		framesSpentDashing = 0
 	
 	if currentAction == "dashTowards":
-		if dashTar != null:
+		var tarRef = weakref(dashTar)
+		var inArray = main.enemies.find(dashTar)
+		if tarRef && inArray != -1:
 			var approachSide = sign(dashTar.get_pos().x - body.get_pos().x)
 			
 			var adjustX = dashTar.get_pos().x - approachSide * 60
 			var adjustVec = Vector2(adjustX,dashTar.get_pos().y)
 			var dirVec = adjustVec - body.get_pos()
 			framesSpentDashing += 60 * delta
+			debug._set_text(String(framesSpentDashing))
 			dirVec = dirVec.normalized() * dashSpeed * delta
 			emit_signal("body_dash",dirVec)
 			if body.get_pos().distance_squared_to(adjustVec) < dashSpeed + 50:
@@ -100,17 +104,21 @@ func _handle_input(delta):
 				mySprite.set_frame(0)
 			if framesSpentDashing >= 30 :
 				currentAction = "stand"
+		else:
+			currentAction = "stand"
 	#Attack Running
 	elif currentAction == "meleeAttack":
 			var cut = attacks[0].instance()
 			var scale = mySprite.get_scale()
-			cut.set_pos(Vector2(scale.x * 20,5))
+			cut.set_pos(Vector2(scale.x * 5,5))
 			cut.scale(scale)
 			cut.get_node("Sprite").play()
 			get_parent().add_child(cut)
 			samplePlayer.play_sound("Cut1")
 			currentAction = "meleeCoolDown"
 	elif currentAction == "meleeCoolDown":
+		if !Input.is_action_pressed("MeleeAttack"):
+			attackReady = true;
 		if mySprite.get_animation() =="stand":
 			currentAction = "stand"
 	elif currentAction == "stand":

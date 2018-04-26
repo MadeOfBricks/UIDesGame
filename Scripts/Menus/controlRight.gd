@@ -21,11 +21,11 @@ func _draw():
 
 
 func _input(ev):
-	if ev.type == InputEvent.SCREEN_TOUCH:
+	if ev.type == InputEvent.SCREEN_TOUCH && ev.pressed:
 		if ev.x > get_pos().x:
 			emit_signal("attack_input")
 
 
-func _on_Right_input_event( ev ):
-	if ev.type == InputEvent.MOUSE_BUTTON:
-		emit_signal("attack_input")
+#func _on_Right_input_event( ev ):
+#	if ev.type == InputEvent.MOUSE_BUTTON:
+#		emit_signal("attack_input")
