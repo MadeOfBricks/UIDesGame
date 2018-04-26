@@ -12,7 +12,7 @@ func _process(delta):
 	pass
 
 func _add_line(string):
-	set_text(get_text() + "\n" + string + "Lines:" + String(get_line_count() - 1))
+	set_text(get_text() + "\n" + string)
 
 func _set_text(string):
 	set_text(string)
