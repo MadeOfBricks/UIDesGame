@@ -148,7 +148,7 @@ margin/top = 150.0
 margin/right = 869.0
 margin/bottom = 357.0
 custom_fonts/font = ExtResource( 16 )
-custom_colors/font_color = Color( 0.577637, 0, 0.660156, 1 )
+custom_colors/font_color = Color( 0.676758, 0, 0.773438, 1 )
 text = "Drag on the left side of the screen to walk
 
 Tap on the right side of the screen to attack
