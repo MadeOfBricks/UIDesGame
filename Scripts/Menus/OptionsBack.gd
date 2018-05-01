@@ -18,6 +18,7 @@ func _on_Back_released():
 func _on_clearData_released():
 	var dir = Directory.new()
 	dir.remove("user://savegame.bin")
+	dir.remove("user://highscores.bin")
 	
 	global.enemyNumber = 0
 	global.pColor = 0
